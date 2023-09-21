@@ -4,5 +4,11 @@ public class Date implements Comparable<Date>{
     private int day;
     public boolean isValid(){
 
+        return false;
+    }
+
+    @Override
+    public int compareTo(Date o) {
+        return 0;
     }
 }

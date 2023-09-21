@@ -5,9 +5,15 @@ public class EventCalendar {
         return 0;
     }
     private void grow() { }
-    public boolean add(Event event){}
-    public boolean remove(Event event){}
-    public boolean contains(Event event){}
+    public boolean add(Event event){
+        return false;
+    }
+    public boolean remove(Event event){
+        return false;
+    }
+    public boolean contains(Event event){
+        return false;
+    }
     public void print(){}
     public void printByDate(){}
     public void printByCampus(){}
