@@ -13,6 +13,7 @@ public enum Location {
         this.campus = campus;
     }
 
+    @Override
     public String toString() {
         return classroom + ", " +campus;
     }
