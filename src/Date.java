@@ -8,7 +8,8 @@ public class Date implements Comparable<Date>{
     }
 
     @Override
-    public int compareTo(Date o) {
+    public int compareTo(Date date2) {
+        if (date2
         return 0;
     }
 }

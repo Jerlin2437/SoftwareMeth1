@@ -18,7 +18,13 @@ public class Event implements Comparable<Event>{
         contact = null;
         duration = 0;
     }
-
+    public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
+        this.date = date;
+        this.startTime = startTime;
+        this.location = location;
+        this.contact = contact;
+        this.duration = duration;
+    }
     public Date getDate() {
         return date;
     }
@@ -69,21 +75,16 @@ public class Event implements Comparable<Event>{
         return false;
     }
     @Override
-    public int compareTo(Event o) {
+    public int compareTo(Event event2) {
+        if (date.compareTo())
         return 0;
     }
-
-    /**
-     * Parameterized constructor
-     * @param date
-     * @param startTime
-     * @param location
-     */
-    public Event(Date date, Timeslot startTime, Location location){
-        this.date = date;
-        this.startTime = startTime;
-        this.location = location;
+    @Override
+    public String toString(){
+        return "";
     }
+
+
     public static void main(String[] args) {
 
     }
