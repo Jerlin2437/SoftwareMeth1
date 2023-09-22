@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Event implements Comparable<Event>{
     private Date date;
     private Timeslot startTime;
@@ -15,6 +17,46 @@ public class Event implements Comparable<Event>{
         location = null;
         contact = null;
         duration = 0;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Timeslot getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timeslot startTime) {
+        this.startTime = startTime;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     @Override
