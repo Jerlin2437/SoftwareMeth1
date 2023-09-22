@@ -76,7 +76,7 @@ public class Event implements Comparable<Event>{
     }
     @Override
     public int compareTo(Event event2) {
-        if (date.compareTo())
+
         return 0;
     }
     @Override
