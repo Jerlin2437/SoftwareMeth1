@@ -1,4 +1,4 @@
-public class Date implements Comparable<Date>{
+public class Date implements Comparable<Date> {
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
@@ -20,20 +20,22 @@ public class Date implements Comparable<Date>{
         if (year < 0 || month < 1 || month > 12)
             return false;
 
-        switch (month) {  // January
-            // March
-            // May
-            // July
-            // August
-            // October
-            // December
+        switch (month) {
+            /**
+             January
+             March
+             May
+             July
+             August
+             October
+             December */
             case 1, 3, 5, 7, 8, 10, 12 -> {
                 return day >= 1 && day <= DAYS_31;
             }
             /** April
-            June
-            September
-            November */
+             June
+             September
+             November */
             case 4, 6, 9, 11 -> {
                 return day >= 1 && day <= DAYS_30;
             }
@@ -54,6 +56,7 @@ public class Date implements Comparable<Date>{
     private boolean isLeapYear() {
         return (year % QUADRENNIAL == 0 && year % CENTENNIAL != 0) || (year % QUATERCENTENNIAL == 0);
     }
+
     @Override
     public int compareTo(Date otherDate) {
         // Compare years
@@ -72,7 +75,7 @@ public class Date implements Comparable<Date>{
         return Integer.compare(this.day, otherDate.day);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //test
     }
 }
