@@ -18,7 +18,13 @@ public class Event implements Comparable<Event>{
         contact = null;
         duration = 0;
     }
-
+    public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
+        this.date = date;
+        this.startTime = startTime;
+        this.location = location;
+        this.contact = contact;
+        this.duration = duration;
+    }
     public Date getDate() {
         return date;
     }
@@ -63,29 +69,36 @@ public class Event implements Comparable<Event>{
     public boolean equals(Object obj){
         if (obj instanceof Event){
             Event event = (Event) obj;
-            return event.date.equals(this.date) && event.startTime.equals(this.startTime)
-                    && event.location.equals(this.location);
+            return event.getDate().equals(this.date) && event.getStartTime().equals(this.startTime)
+                    && event.getLocation().equals(this.location);
         }
         return false;
     }
+    //compare event date and timeslot
     @Override
-    public int compareTo(Event o) {
+    public int compareTo(Event event) {
+        if ((this.date.compareTo(event.date) > 0)){
+            return 1;
+        }
+        if ((this.date.compareTo(event.date) < 0)){
+            return -1;
+        }
+        if ((this.startTime.compareTo(event.startTime) > 0)){
+            return 1;
+        }
+        if ((this.startTime.compareTo(event.startTime) < 0)){
+            return -1;
+        }
         return 0;
     }
 
-    /**
-     * Parameterized constructor
-     * @param date
-     * @param startTime
-     * @param location
-     */
-    public Event(Date date, Timeslot startTime, Location location){
-        this.date = date;
-        this.startTime = startTime;
-        this.location = location;
-    }
-    public static void main(String[] args) {
-
+    @Override
+    public String toString() {
+        return "[Event Date: " + date + "] " +
+                "[Start: " + startTime + "] " +
+                "[End: " + startTime + duration + "] " +
+                "@" + location +
+                "[Contact: " + contact + "] ";
     }
 
 }
