@@ -67,8 +67,7 @@ public class Event implements Comparable<Event>{
 
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof Event){
-            Event event = (Event) obj;
+        if (obj instanceof Event event){
             return event.getDate().equals(this.date) && event.getStartTime().equals(this.startTime)
                     && event.getLocation().equals(this.location);
         }
