@@ -2,9 +2,21 @@ public class EventCalendar {
     private Event [] events;
     private int numEvents;
     private int find(Event event){
-        return 0;
+        for (int x = 0; x < numEvents; x++){
+            if (events[x].equals(event))
+                return x;
+        }
+        return -1;
     }
-    private void grow() { }
+
+    public EventCalendar(Event[] events, int numEvents) {
+        this.events = events;
+        this.numEvents = numEvents;
+    }
+
+    private void grow() {
+        this.events = new Event[this.events.length + 4];
+    }
     public boolean add(Event event){
         return false;
     }
