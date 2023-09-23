@@ -69,24 +69,36 @@ public class Event implements Comparable<Event>{
     public boolean equals(Object obj){
         if (obj instanceof Event){
             Event event = (Event) obj;
-            return event.date.equals(this.date) && event.startTime.equals(this.startTime)
-                    && event.location.equals(this.location);
+            return event.getDate().equals(this.date) && event.getStartTime().equals(this.startTime)
+                    && event.getLocation().equals(this.location);
         }
         return false;
     }
+    //compare event date and timeslot
     @Override
-    public int compareTo(Event event2) {
-
+    public int compareTo(Event event) {
+        if ((this.date.compareTo(event.date) > 0)){
+            return 1;
+        }
+        if ((this.date.compareTo(event.date) < 0)){
+            return -1;
+        }
+        if ((this.startTime.compareTo(event.startTime) > 0)){
+            return 1;
+        }
+        if ((this.startTime.compareTo(event.startTime) < 0)){
+            return -1;
+        }
         return 0;
     }
+
     @Override
-    public String toString(){
-        return "";
-    }
-
-
-    public static void main(String[] args) {
-
+    public String toString() {
+        return "[Event Date: " + date + "] " +
+                "[Start: " + startTime + "] " +
+                "[End: " + startTime + duration + "] " +
+                "@" + location +
+                "[Contact: " + contact + "] ";
     }
 
 }
