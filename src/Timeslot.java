@@ -10,6 +10,14 @@ public enum Timeslot {
         this.minute = minute;
     }
 
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
     @Override
     public String toString(){
         return hour + ":" + minute;

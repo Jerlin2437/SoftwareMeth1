@@ -1,5 +1,5 @@
 public enum Location {
-    HILL114("Hill Center", "Busch"),
+    HLL114("Hill Center", "Busch"),
     ARC103("Allison Road Classroom", "Busch"),
     BE_AUD("Beck Hall", "Livingston"),
     TIL232("Tillett Hall", "Livingston"),
@@ -11,6 +11,14 @@ public enum Location {
     Location(String classroom, String campus){
         this.classroom = classroom;
         this.campus = campus;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public String getCampus() {
+        return campus;
     }
 
     @Override
