@@ -17,6 +17,11 @@ public enum Department {
     public String getAcronym(){
         return acronym;
     }
+
+    public String getFullName() {
+        return fullName;
+    }
+
     @Override
     public String toString() {
         return fullName;

@@ -61,12 +61,13 @@ public class EventCalendar {
             System.out.println(event);
         }
     }
+    //double check compareTo, should be right tho (for events - checks date AND timeslot)
     public void printByDate(){
         //sort by date
         for (int i = 0; i < events.length; i++){
             for (int j = i + 1; j < events.length - 1; j++){
                 Event temp = null;
-                if (events[j].getDate().compareTo(events[i].getDate()) < 0){
+                if (events[j].compareTo(events[i]) < 0){
                     temp = events[i];
                     events[i] = events[j];
                     events[j] = temp;
@@ -76,8 +77,35 @@ public class EventCalendar {
         //print by date
         print();
     }
+    //order by campus and building/room
     public void printByCampus(){
-
+        //sort by date
+        for (int i = 0; i < events.length; i++){
+            for (int j = i + 1; j < events.length - 1; j++){
+                Event temp = null;
+                if (events[j].getLocation().compareTo(events[i].getLocation()) < 0){
+                    temp = events[i];
+                    events[i] = events[j];
+                    events[j] = temp;
+                }
+            }
+        }
+        //print by campus and building/room
+        print();
     }
-    public void printByDepartment(){}
+    //order by department
+    public void printByDepartment(){
+        for (int i = 0; i < events.length; i++){
+            for (int j = i + 1; j < events.length - 1; j++){
+                Event temp = null;
+                if (events[j].getContact().getDepartment().compareTo(events[i].getContact().getDepartment()) < 0){
+                    temp = events[i];
+                    events[i] = events[j];
+                    events[j] = temp;
+                }
+            }
+        }
+        //print by department
+        print();
+    }
 }
