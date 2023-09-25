@@ -18,6 +18,7 @@ public class Event implements Comparable<Event>{
         contact = null;
         duration = 0;
     }
+    // A 10/21/2023 afternoon hll114 cs cs@rutgers.edu 60
     public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
         this.date = date;
         this.startTime = startTime;
@@ -90,14 +91,12 @@ public class Event implements Comparable<Event>{
         }
         return 0;
     }
-
     @Override
     public String toString() {
         return "[Event Date: " + date + "] " +
                 "[Start: " + startTime + "] " +
                 "[End: " + startTime + duration + "] " +
                 "@" + location +
-                "[Contact: " + contact + "] ";
+                " [Contact: " + contact + "] ";
     }
-
 }

@@ -75,6 +75,11 @@ public class Date implements Comparable<Date> {
         return Integer.compare(this.day, otherDate.day);
     }
 
+    @Override
+    public String toString(){
+        return month + "/" + day + "/" + year;
+    }
+
     public static void main(String[] args) {
 //test
     }

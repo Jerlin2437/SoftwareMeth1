@@ -38,7 +38,6 @@ public class EventCalendar {
         }
         events[size] = event;
         size++;
-
         return true; //event added
     }
     public boolean remove(Event event){

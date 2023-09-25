@@ -17,4 +17,9 @@ public class Contact {
         boolean isDepartmentNameValid = departmentName.equals("CS") || departmentName.equals("ITI") || departmentName.equals("BAIT") || departmentName.equals("MATH") || departmentName.equals("EE");
         return isDepartmentNameValid && domainName.equals("@rutgers.edu");
     }
+
+    @Override
+    public String toString(){
+        return department.getAcronym() + ", " + email;
+    }
 }
