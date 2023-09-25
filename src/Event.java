@@ -91,6 +91,23 @@ public class Event implements Comparable<Event>{
         }
         return 0;
     }
+
+//    public Timeslot calcEndTime(){
+//        Timeslot endTime;
+//        int hours = startTime.getHour();
+//        int minutes = startTime.getMinute();
+//        minutes += duration;
+//        if (minutes >= 60){
+//            hours++;
+//            minutes = minutes - 60;
+//        }
+//
+//        endTime.setHour(hours);
+//        endTime.setMinutes(minutes);
+//
+//        return endTime;
+//    }
+
     @Override
     public String toString() {
         return "[Event Date: " + date + "] " +

@@ -20,6 +20,9 @@ public enum Timeslot {
 
     @Override
     public String toString(){
+        if (minute == 0){
+            return hour + ":" + minute + "0";
+        }
         return hour + ":" + minute;
     }
 }
