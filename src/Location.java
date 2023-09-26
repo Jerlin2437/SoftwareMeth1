@@ -22,7 +22,6 @@ public enum Location {
     }
 
     @Override
-
     public String toString() {
         return classroom + ", " +campus;
     }
