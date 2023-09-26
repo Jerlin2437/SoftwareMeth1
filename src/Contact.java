@@ -6,6 +6,8 @@ public class Contact {
         return department;
     }
 
+
+
     public Contact(Department department, String email) {
         this.department = department;
         this.email = email;
@@ -20,6 +22,6 @@ public class Contact {
 
     @Override
     public String toString(){
-        return department.getAcronym() + ", " + email;
+        return department + ", " + email;
     }
 }

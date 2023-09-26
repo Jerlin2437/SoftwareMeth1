@@ -12,6 +12,8 @@ public class TesterClass {
             System.out.println(newEvent.toString());
             System.out.println(compareEvent.toString());
             System.out.println(newEvent.equals(compareEvent));
+
+
         }
 
 

@@ -16,6 +16,7 @@ public class Date implements Comparable<Date> {
         this.day = day;
     }
 
+    //within 6 months...make sure to go over all requirements/prereqs
     public boolean isValid() {
         if (year < 0 || month < 1 || month > 12)
             return false;
