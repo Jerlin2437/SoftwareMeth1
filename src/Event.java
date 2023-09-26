@@ -93,7 +93,7 @@ public class Event implements Comparable<Event>{
     }
 
 //    public Timeslot calcEndTime(){
-//        Timeslot endTime;
+//
 //        int hours = startTime.getHour();
 //        int minutes = startTime.getMinute();
 //        minutes += duration;
@@ -101,18 +101,23 @@ public class Event implements Comparable<Event>{
 //            hours++;
 //            minutes = minutes - 60;
 //        }
+//        if (startTime.getHour() == 10){
+//            return Timeslot.MORNING(hours, minutes);
+//        }
+//        else if (startTime.getHour() == 2){
+//            return Timeslot.AFTERNOON;
+//        }
+//        else {
+//            return Timeslot.EVENING;
+//        }
 //
-//        endTime.setHour(hours);
-//        endTime.setMinutes(minutes);
-//
-//        return endTime;
 //    }
 
     @Override
     public String toString() {
         return "[Event Date: " + date + "] " +
                 "[Start: " + startTime + "] " +
-                "[End: " + startTime + duration + "] " +
+                "[End: " + startTime.toString(duration) + "] " +
                 "@" + location +
                 " [Contact: " + contact + "] ";
     }
