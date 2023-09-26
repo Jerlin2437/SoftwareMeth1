@@ -8,5 +8,8 @@ public class EventOrganizer {
      * Q - stop execution and display "Event Organizer terminated."
      */
     public void run() {
+        System.out.println("Event Organizer running....");
+
+        System.out.println("Event Organizer Terminated");
     }
 }
