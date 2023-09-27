@@ -27,12 +27,29 @@ public class EventOrganizer {
             // Tokenize each line by reading each token
             while (lineScanner.hasNext()) {
                 String token = lineScanner.next();
-            }
+                if (token.equals("A")){}
+                else if(token.equals("R")){
 
+                }
+                else if(token.equals("P")){
+
+                }
+                else if(token.equals("PE")){
+
+                }
+                else if(token.equals("PC")){
+
+                }
+                else if(token.equals("PD")){
+                }
+            }
         }
+    }
+    public void commands(String line){
+
     }
     public void errorMessages(){
 
     }
-    
+
 }
