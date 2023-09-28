@@ -6,6 +6,15 @@ public class EventCalendar {
 
     private int capacity = 4;
     private int size = 0;
+    public EventCalendar(Event[] events, int numEvents) {
+        this.events = events;
+        this.numEvents = numEvents;
+    }
+
+    public EventCalendar() {
+        events = new Event[4];
+        numEvents = 0;
+    }
 
     private int find(Event event){
         for (int x = 0; x < numEvents; x++){
@@ -15,10 +24,7 @@ public class EventCalendar {
         return NOT_FOUND;
     }
 
-    public EventCalendar(Event[] events, int numEvents) {
-        this.events = events;
-        this.numEvents = numEvents;
-    }
+
 
     private void grow() {
 //          this.events = new Event[this.events.length + 4];

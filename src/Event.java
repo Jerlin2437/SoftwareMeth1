@@ -18,6 +18,13 @@ public class Event implements Comparable<Event>{
         contact = null;
         duration = 0;
     }
+
+    public Event(Date date, Timeslot startTime, Location location) {
+        this.date = date;
+        this.startTime = startTime;
+        this.location = location;
+    }
+
     // A 10/21/2023 afternoon hll114 cs cs@rutgers.edu 60
     public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
         this.date = date;
