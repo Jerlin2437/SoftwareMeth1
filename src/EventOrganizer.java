@@ -49,6 +49,9 @@ public class EventOrganizer {
             }
         }
     }
+    public static void addEvent(String line, EventCalendar eventCalendar){
+
+    }
     public static void cancelEvent(String line, EventCalendar eventCalendar){
         Scanner lineScanner = new Scanner(line);
         lineScanner.next();
@@ -131,7 +134,6 @@ public class EventOrganizer {
 
     }
     public static void main(String[] args){
-        cancel("R 11/12/2025 MORNING HILL114");
     }
 
 }
