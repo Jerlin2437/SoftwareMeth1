@@ -59,54 +59,74 @@ public class Date implements Comparable<Date> {
     }
 
     //checks if event is a valid calendar date
-    public boolean isValidDate() {
-        Calendar eventDate = Calendar.getInstance();
-        eventDate.set(year, month, day);
-
-        if (year < 0 || month < 1 || month > 12)
-            return false;
-
-        switch (month) {
-            /**
-             January
-             March
-             May
-             July
-             August
-             October
-             December */
-            case 1, 3, 5, 7, 8, 10, 12 -> {
-                return day >= 1 && day <= DAYS_31;
-            }
-            /** April
-             June
-             September
-             November */
-            case 4, 6, 9, 11 -> {
-                return day >= 1 && day <= DAYS_30;
-            }
-            // February
-            case 2 -> {  // February
-                if (isLeapYear()) {
-                    return day >= 1 && day <= DAYS_FEB_LEAP;
-                } else {
-                    return day >= 1 && day <= DAYS_FEB_NORMAL;
-                }
-            }
-            default -> {
-                return false;
-            }
-        }
-    }
+//    public boolean isValidDate() {
+//        Calendar eventDate = Calendar.getInstance();
+//        eventDate.set(year, month, day);
+//
+//        if (year < 0 || month < 1 || month > 12)
+//            return false;
+//
+//        switch (month) {
+//            /**
+//             January
+//             March
+//             May
+//             July
+//             August
+//             October
+//             December */
+//            case 1, 3, 5, 7, 8, 10, 12 -> {
+//                return day >= 1 && day <= DAYS_31;
+//            }
+//            /** April
+//             June
+//             September
+//             November */
+//            case 4, 6, 9, 11 -> {
+//                return day >= 1 && day <= DAYS_30;
+//            }
+//            // February
+//            case 2 -> {  // February
+//                if (isLeapYear()) {
+//                    return day >= 1 && day <= DAYS_FEB_LEAP;
+//                } else {
+//                    return day >= 1 && day <= DAYS_FEB_NORMAL;
+//                }
+//            }
+//            default -> {
+//                return false;
+//            }
+//        }
+//    }
 
     //checks if date is a future date
     public boolean isFuture(){
+//        Calendar currentDate = Calendar.getInstance();
+//        Calendar eventDate = Calendar.getInstance();
+//        eventDate.set(year, month, day);
+//
+////        return eventDate.compareTo(currentDate) > 0;
+//        int yearCompare = Integer.compare(eventDate.get(Calendar.YEAR), currentDate.get(Calendar.YEAR));
+//        if (yearCompare > 0) {
+//            return true;
+//        } else if (yearCompare < 0) {
+//            return false;
+//        }
+//
+//        int monthCompare = Integer.compare(eventDate.get(Calendar.MONTH), currentDate.get(Calendar.MONTH));
+//        if (monthCompare > 0) {
+//            return true;
+//        } else if (monthCompare < 0) {
+//            return false;
+//        }
+//
+//        int dayCompare = Integer.compare(eventDate.get(Calendar.DAY_OF_MONTH), currentDate.get(Calendar.DAY_OF_MONTH));
+//        return dayCompare > 0;
+
         Calendar currentDate = Calendar.getInstance();
-        Calendar eventDate = Calendar.getInstance();
-        eventDate.set(year, month, day);
+        Date today = new Date(currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH) + 1, currentDate.get(Calendar.DAY_OF_MONTH));
 
-        return eventDate.compareTo(currentDate) > 0;
-
+        return this.compareTo(today) > 0;
     }
 
     //checks if no more than 6 months away
@@ -115,10 +135,11 @@ public class Date implements Comparable<Date> {
         Calendar eventDate = Calendar.getInstance();
         eventDate.set(year, month, day);
 
-        int m1 = currentDate.get(Calendar.YEAR) * 12 + currentDate.get(Calendar.MONTH);
-        int m2 = eventDate.get(Calendar.YEAR) * 12 + eventDate.get(Calendar.MONTH);
+        //change name of vars?
+        int numOfMonths1 = currentDate.get(Calendar.YEAR) * 12 + currentDate.get(Calendar.MONTH);
+        int numOfMonths2 = eventDate.get(Calendar.YEAR) * 12 + eventDate.get(Calendar.MONTH);
 
-        int diffInMonths = m2 - m1 + 1;
+        int diffInMonths = Math.abs(numOfMonths2 - numOfMonths1 - 1);
 
         return diffInMonths <= 6;
     }
