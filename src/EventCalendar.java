@@ -38,13 +38,22 @@ public class EventCalendar {
 
     //array-based, new event is added to the end of the array
     //initial cap of 4, +4 whenever full
-    public boolean add(Event event){
-        if (size == capacity) {
-            grow();
+    public boolean add(Event event) {
+        if (contains(event))
+            return false;
+        else {
+            if (size == capacity) {
+                grow();
+            }
+            for (int x = 0; x < capacity; x++) {
+                if (events[x] == null) {
+                    events[x] = event;
+                    size++;
+                    return true;
+                }
+            }
         }
-        events[size] = event;
-        size++;
-        return true; //event added
+        return false;
     }
     public boolean remove(Event event){
         int index = find(event);

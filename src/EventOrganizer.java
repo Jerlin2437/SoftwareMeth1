@@ -79,9 +79,8 @@ public class EventOrganizer {
         int duration = Integer.parseInt(lineScanner.next());
         if (duration >= 30 && duration <= 120) {
             Event event = new Event(date, timeslot, location, contact, duration);
-            if (!eventCalendar.contains(event)) {
+            if (eventCalendar.add(event)) {
                 System.out.println("Event added to the calendar.");
-                eventCalendar.add(event);
             } else
                 System.out.println("The event is already on the calendar.");
         }
