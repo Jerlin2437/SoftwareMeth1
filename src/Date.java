@@ -1,3 +1,6 @@
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
 public class Date implements Comparable<Date> {
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
@@ -18,6 +21,7 @@ public class Date implements Comparable<Date> {
 
     //within 6 months...make sure to go over all requirements/prereqs
     public boolean isValid() {
+
         if (year < 0 || month < 1 || month > 12)
             return false;
 
@@ -54,6 +58,71 @@ public class Date implements Comparable<Date> {
         }
     }
 
+    //checks if event is a valid calendar date
+    public boolean isValidDate() {
+        Calendar eventDate = Calendar.getInstance();
+        eventDate.set(year, month, day);
+
+        if (year < 0 || month < 1 || month > 12)
+            return false;
+
+        switch (month) {
+            /**
+             January
+             March
+             May
+             July
+             August
+             October
+             December */
+            case 1, 3, 5, 7, 8, 10, 12 -> {
+                return day >= 1 && day <= DAYS_31;
+            }
+            /** April
+             June
+             September
+             November */
+            case 4, 6, 9, 11 -> {
+                return day >= 1 && day <= DAYS_30;
+            }
+            // February
+            case 2 -> {  // February
+                if (isLeapYear()) {
+                    return day >= 1 && day <= DAYS_FEB_LEAP;
+                } else {
+                    return day >= 1 && day <= DAYS_FEB_NORMAL;
+                }
+            }
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    //checks if date is a future date
+    public boolean isFuture(){
+        Calendar currentDate = Calendar.getInstance();
+        Calendar eventDate = Calendar.getInstance();
+        eventDate.set(year, month, day);
+
+        return eventDate.compareTo(currentDate) > 0;
+
+    }
+
+    //checks if no more than 6 months away
+    public boolean isUnder6Months(){
+        Calendar currentDate = Calendar.getInstance();
+        Calendar eventDate = Calendar.getInstance();
+        eventDate.set(year, month, day);
+
+        int m1 = currentDate.get(Calendar.YEAR) * 12 + currentDate.get(Calendar.MONTH);
+        int m2 = eventDate.get(Calendar.YEAR) * 12 + eventDate.get(Calendar.MONTH);
+
+        int diffInMonths = m2 - m1 + 1;
+
+        return diffInMonths <= 6;
+    }
+
     private boolean isLeapYear() {
         return (year % QUADRENNIAL == 0 && year % CENTENNIAL != 0) || (year % QUATERCENTENNIAL == 0);
     }
@@ -82,6 +151,40 @@ public class Date implements Comparable<Date> {
     }
 
     public static void main(String[] args) {
-//test
+        testDaysInFeb_Nonleap();
+        testDaysInFeb_Leap();
+        testMonth_OutOfRange();
     }
+
+    /** Test case #1 */
+    private static void testDaysInFeb_Nonleap(){
+        Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #1: # of days in Feb. in a non-leap year is 28");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
+    /** Test case #2 */
+    private static void testDaysInFeb_Leap(){
+
+    }
+
+    /** Test case #3 */
+    private static void testMonth_OutOfRange(){
+
+    }
+
+    private static void testResult(Date date, boolean expectedOutput, boolean actualOutput){
+        System.out.println("Test input: " + date.toString());
+        System.out.println("Expected output: " + expectedOutput);
+        System.out.println("Actual output: " + actualOutput);
+        if (expectedOutput != actualOutput){
+            System.out.println(" (FAIL \n");
+        } else{
+            System.out.println(" (PASS) \n");
+        }
+    }
+
+
 }
