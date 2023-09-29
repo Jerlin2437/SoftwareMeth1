@@ -188,11 +188,20 @@ public class Date implements Comparable<Date> {
 
     /** Test case #2 */
     private static void testDaysInFeb_Leap(){
+        Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
+        boolean expectedOutput = true;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #2: # of days in Feb. in a leap year is 29");
+        testResult(date, expectedOutput, actualOutput);
     }
 
     /** Test case #3 */
     private static void testMonth_OutOfRange(){
-
+        Date date = new Date(2011, 13, 29); //test data --> invalid calendar date
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #3: # of months in a year is 12, month cannot be more than 12.");
+        testResult(date, expectedOutput, actualOutput);
     }
 
     private static void testResult(Date date, boolean expectedOutput, boolean actualOutput){
@@ -205,6 +214,5 @@ public class Date implements Comparable<Date> {
             System.out.println(" (PASS) \n");
         }
     }
-
 
 }

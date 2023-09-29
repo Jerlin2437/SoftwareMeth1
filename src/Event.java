@@ -107,4 +107,66 @@ public class Event implements Comparable<Event>{
                 "@" + location +
                 " [Contact: " + contact + "] ";
     }
+
+    /**
+     * The equals() method returns true if two dates, timeslots and locations are equal.
+     * The compareTo() method compares the dates first, then the timeslots if the dates are the same.
+     */
+
+    public static void main(String[] args) {
+        testEquals();
+        testCompareTo();
+    }
+
+    /** Test case #1 */
+    private static void testEquals(){
+        Date date1 = new Date(2023, 12, 12);
+        Date date2 = new Date(2023, 12, 12);
+
+        //check this, why false...
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225);
+
+        boolean expectedOutput = true;
+        boolean actualOutput = event1.equals(event2);
+        System.out.println("**Test case #1: checks if two dates, timeslots, and locations are equal");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    /** Test case #2 */
+    //The compareTo() method compares the dates first, then the timeslots if the dates are the same.
+    private static void testCompareTo(){
+        Date date1 = new Date(2023, 12, 12);
+        Date date2 = new Date(2023, 12, 12);
+
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225);
+        int expectedOutput = 0;
+        int actualOutput = event1.compareTo(event2);
+        System.out.println("**Test case #2: compares dates, then the timeslots if the dates are the same");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    private static void testResult(Event event, boolean expectedOutput, boolean actualOutput){
+        System.out.println("Test input: " + event.toString());
+        System.out.println("Expected output: " + expectedOutput);
+        System.out.println("Actual output: " + actualOutput);
+        if (expectedOutput != actualOutput){
+            System.out.println(" (FAIL \n");
+        } else{
+            System.out.println(" (PASS) \n");
+        }
+    }
+
+    private static void testResult(Event event, int expectedOutput, int actualOutput){
+        System.out.println("Test input: " + event.toString());
+        System.out.println("Expected output: " + expectedOutput);
+        System.out.println("Actual output: " + actualOutput);
+        if (expectedOutput != actualOutput){
+            System.out.println(" (FAIL \n");
+        } else{
+            System.out.println(" (PASS) \n");
+        }
+    }
+
 }
