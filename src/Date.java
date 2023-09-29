@@ -188,7 +188,6 @@ public class Date implements Comparable<Date> {
 
     /** Test case #2 */
     private static void testDaysInFeb_Leap(){
-
     }
 
     /** Test case #3 */
