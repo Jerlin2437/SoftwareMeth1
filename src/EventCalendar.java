@@ -74,9 +74,11 @@ public class EventCalendar {
         if (isEmpty()){
             System.out.println("Event calendar is empty.");
         } else{
-            for (Event event : events) {
-                System.out.println(event);
+            System.out.println("* Event calendar *");
+            for(int x = 0; x < size; x++){
+                System.out.println(events[x].toString());
             }
+            System.out.println("* end of event calendar *");
         }
     }
     //double check compareTo, should be right tho (for events - checks date AND timeslot)

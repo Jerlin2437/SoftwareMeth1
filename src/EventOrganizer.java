@@ -12,7 +12,7 @@ public class EventOrganizer {
      * Q - stop execution and display "Event Organizer terminated."
      */
     public void run() {
-        System.out.println("Event Organizer running....");
+        System.out.println("Event Organizer running....\n");
         EventCalendar eventCalendar = new EventCalendar();
         scan(eventCalendar);
         System.out.println("Event Organizer Terminated");
@@ -23,30 +23,33 @@ public class EventOrganizer {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            if (line.equalsIgnoreCase("Q")) {
+            if (line.equals("Q")) {
                 break;
             }
             Scanner lineScanner = new Scanner(line);
+            if (!lineScanner.hasNext())
+                continue;
             // Tokenize each line by reading each token
-            while (lineScanner.hasNext()) {
-                String token = lineScanner.next();
-                if (token.equals("A")) {
-                    addEvent(line, eventCalendar);
-                } else if (token.equals("R")) {
-                    cancelEvent(line, eventCalendar);
-                } else if (token.equals("P")) {
-                    eventCalendar.print();
-                } else if (token.equals("PE")) {
-                    eventCalendar.printByDate();
-                } else if (token.equals("PC")) {
-                    eventCalendar.printByCampus();
-                } else if (token.equals("PD")) {
-                    eventCalendar.printByDepartment();
-                }
-            }
+            String token = lineScanner.next();
+            if (token.equals("A")) {
+                addEvent(line, eventCalendar);
+            } else if (token.equals("R")) {
+                cancelEvent(line, eventCalendar);
+            } else if (token.equals("P")) {
+                eventCalendar.print();
+            } else if (token.equals("PE")) {
+                eventCalendar.printByDate();
+            } else if (token.equals("PC")) {
+                eventCalendar.printByCampus();
+            } else if (token.equals("PD")) {
+                eventCalendar.printByDepartment();
+            } else
+                System.out.println(token + " is an invalid command!");
         }
+
     }
-//A 10/21/2023 afternoon hll114 cs cs@rutgers.edu 60
+
+    //A 10/21/2023 afternoon hll114 cs cs@rutgers.edu 60
     public static void addEvent(String line, EventCalendar eventCalendar) {
         Scanner lineScanner = new Scanner(line);
         lineScanner.next(); // Assuming this is used to skip some initial token (not clear from the context)
@@ -84,7 +87,8 @@ public class EventOrganizer {
                 System.out.println("Event added to the calendar.");
             } else
                 System.out.println("The event is already on the calendar.");
-        }
+        } else
+            System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
     }
 
     public static void cancelEvent(String line, EventCalendar eventCalendar) {
