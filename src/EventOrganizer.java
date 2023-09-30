@@ -31,21 +31,22 @@ public class EventOrganizer {
             while (lineScanner.hasNext()) {
                 String token = lineScanner.next();
                 if (token.equals("A")) {
-                    addEvent(token, eventCalendar);
+                    addEvent(line, eventCalendar);
                 } else if (token.equals("R")) {
-                    cancelEvent(token, eventCalendar);
+                    cancelEvent(line, eventCalendar);
                 } else if (token.equals("P")) {
-
+                    eventCalendar.print();
                 } else if (token.equals("PE")) {
-
+                    eventCalendar.printByDate();
                 } else if (token.equals("PC")) {
-
+                    eventCalendar.printByCampus();
                 } else if (token.equals("PD")) {
+                    eventCalendar.printByDepartment();
                 }
             }
         }
     }
-
+//A 10/21/2023 afternoon hll114 cs cs@rutgers.edu 60
     public static void addEvent(String line, EventCalendar eventCalendar) {
         Scanner lineScanner = new Scanner(line);
         lineScanner.next(); // Assuming this is used to skip some initial token (not clear from the context)
@@ -140,6 +141,8 @@ public class EventOrganizer {
                 }
             }
         }
+        System.out.println("Invalid contact information!");
+        return null;
     }
 
     public static Location extractLocation(String locationCode) {
