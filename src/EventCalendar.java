@@ -17,14 +17,12 @@ public class EventCalendar {
     }
 
     private int find(Event event){
-        for (int x = 0; x < numEvents; x++){
-            if (events[x].equals(event))
+        for (int x = 0; x < size; x++){
+            if (events[x] != null && events[x].equals(event))
                 return x;
         }
         return NOT_FOUND;
     }
-
-
 
     private void grow() {
 //          this.events = new Event[this.events.length + 4];
@@ -36,7 +34,6 @@ public class EventCalendar {
         events = newEvents;
     }
 
-    //array-based, new event is added to the end of the array
     //initial cap of 4, +4 whenever full
     public boolean add(Event event) {
         if (contains(event))
@@ -70,56 +67,98 @@ public class EventCalendar {
     public boolean contains(Event event){
         return (find(event) != NOT_FOUND);
     }
+
+    public boolean isEmpty() { return size == 0; }
+
     public void print(){
-        for (Event event : events) {
-            System.out.println(event);
+        if (isEmpty()){
+            System.out.println("Event calendar is empty.");
+        } else{
+            for (Event event : events) {
+                System.out.println(event);
+            }
         }
     }
     //double check compareTo, should be right tho (for events - checks date AND timeslot)
     public void printByDate(){
-        //sort by date
-        for (int i = 0; i < events.length; i++){
-            for (int j = i + 1; j < events.length - 1; j++){
-                Event temp = null;
-                if (events[j].compareTo(events[i]) < 0){
-                    temp = events[i];
-                    events[i] = events[j];
-                    events[j] = temp;
+        if (isEmpty()){
+            System.out.println("Event calendar is empty.");
+        } else{
+            //sort by date
+            for (int i = 0; i < size; i++){
+                for (int j = i + 1; j < size; j++){
+                    Event temp = null;
+                    if (events[j].getDate().compareTo(events[i].getDate()) < 0){
+                        temp = events[i];
+                        events[i] = events[j];
+                        events[j] = temp;
+                    }
                 }
             }
+            //print by date
+            print();
         }
-        //print by date
-        print();
+
+
     }
     //order by campus and building/room
     public void printByCampus(){
-        //sort by date
-        for (int i = 0; i < events.length; i++){
-            for (int j = i + 1; j < events.length - 1; j++){
-                Event temp = null;
-                if (events[j].getLocation().compareTo(events[i].getLocation()) < 0){
-                    temp = events[i];
-                    events[i] = events[j];
-                    events[j] = temp;
+        if (isEmpty()){
+            System.out.println("Event calendar is empty.");
+        } else{
+            //sort by date
+            for (int i = 0; i < size; i++){
+                for (int j = i + 1; j < size; j++){
+                    Event temp = null;
+                    if (events[j].getLocation().compareTo(events[i].getLocation()) < 0){
+                        temp = events[i];
+                        events[i] = events[j];
+                        events[j] = temp;
+                    }
                 }
             }
+            //print by campus and building/room
+            print();
         }
-        //print by campus and building/room
-        print();
     }
     //order by department
     public void printByDepartment(){
-        for (int i = 0; i < events.length; i++){
-            for (int j = i + 1; j < events.length - 1; j++){
-                Event temp = null;
-                if (events[j].getContact().getDepartment().compareTo(events[i].getContact().getDepartment()) < 0){
-                    temp = events[i];
-                    events[i] = events[j];
-                    events[j] = temp;
+        if (isEmpty()){
+            System.out.println("Event calendar is empty.");
+        } else{
+            for (int i = 0; i < size; i++){
+                for (int j = i + 1; j < size; j++){
+                    Event temp = null;
+                    if (events[j].getContact().getDepartment().compareTo(events[i].getContact().getDepartment()) < 0){
+                        temp = events[i];
+                        events[i] = events[j];
+                        events[j] = temp;
+                    }
                 }
             }
+            //print by department
+            print();
         }
-        //print by department
-        print();
     }
+
+    public static void main(String[] args) {
+        EventCalendar eventCalendar = new EventCalendar();
+
+        Date newDate = new Date(2023, 9, 29);
+        Contact newContact = new Contact(Department.EE, "cs@rutgers.edu");
+        Event newEvent = new Event(newDate, Timeslot.AFTERNOON, Location.AB2225, newContact, 60);
+
+        Date newDate2 = new Date(2022, 10, 30);
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
+        Event newEvent2 = new Event(newDate2, Timeslot.MORNING, Location.HLL114, newContact2, 60);
+
+        eventCalendar.add(newEvent);
+        System.out.println(eventCalendar.contains(newEvent2));
+        eventCalendar.add(newEvent2);
+        eventCalendar.remove(newEvent);
+        eventCalendar.printByDepartment();
+    }
+
 }
+
+

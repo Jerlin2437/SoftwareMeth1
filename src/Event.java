@@ -73,14 +73,25 @@ public class Event implements Comparable<Event>{
         this.duration = duration;
     }
 
+    //The equals() method returns true if two dates, timeslots and locations are equal.
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof Event event){
-            return event.getDate().equals(this.date) && event.getStartTime().equals(this.startTime)
+        boolean sameDates = false;
+        if (obj instanceof Event){
+            Event event = (Event) obj;
+
+            if (event.getDate().compareTo(this.date) == 0){
+                sameDates = true;
+            } else{
+                sameDates = false;
+            }
+
+            return sameDates && event.getStartTime().equals(this.startTime)
                     && event.getLocation().equals(this.location);
         }
         return false;
     }
+
     //compare event date and timeslot
     @Override
     public int compareTo(Event event) {
@@ -120,12 +131,14 @@ public class Event implements Comparable<Event>{
 
     /** Test case #1 */
     private static void testEquals(){
-        Date date1 = new Date(2023, 12, 12);
-        Date date2 = new Date(2023, 12, 12);
+        Date date1 = new Date(2023, 12, 15);
+        Date date2 = new Date(2023, 12, 15);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
 
-        //check this, why false...
-        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225);
-        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225);
+        //check this, why false --> b/c dates don't compare right
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225, newContact2, 60);
 
         boolean expectedOutput = true;
         boolean actualOutput = event1.equals(event2);
@@ -137,16 +150,19 @@ public class Event implements Comparable<Event>{
     //The compareTo() method compares the dates first, then the timeslots if the dates are the same.
     private static void testCompareTo(){
         Date date1 = new Date(2023, 12, 12);
-        Date date2 = new Date(2023, 12, 12);
+        Date date2 = new Date(2023, 11, 12);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.EE, "ee@rutgers.edu");
 
-        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225);
-        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225);
-        int expectedOutput = 0;
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225, newContact2, 60);
+        int expectedOutput = 1;
         int actualOutput = event1.compareTo(event2);
         System.out.println("**Test case #2: compares dates, then the timeslots if the dates are the same");
         testResult(event1, expectedOutput, actualOutput);
     }
 
+    //to test equals method
     private static void testResult(Event event, boolean expectedOutput, boolean actualOutput){
         System.out.println("Test input: " + event.toString());
         System.out.println("Expected output: " + expectedOutput);
@@ -158,6 +174,7 @@ public class Event implements Comparable<Event>{
         }
     }
 
+    //to test compareTo method
     private static void testResult(Event event, int expectedOutput, int actualOutput){
         System.out.println("Test input: " + event.toString());
         System.out.println("Expected output: " + expectedOutput);
