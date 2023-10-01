@@ -1,3 +1,10 @@
+/**
+ * This enum class provides a list of specified timeslots with methods to convert
+ * and change time durations.
+ * @author Jerlin Yuen
+ * @author Jason Lei
+ */
+
 public enum Timeslot {
     MORNING(10,30),
     AFTERNOON(2,0),
@@ -8,28 +15,69 @@ public enum Timeslot {
     private int endHour;
     private int endMinute;
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     Timeslot(int hour, int minute) {
         this.hour = hour;
         this.minute = minute;
     }
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public int getHour() {
         return hour;
     }
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public int getMinute() {
         return minute;
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public int getEndHour(){
         return endHour;
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public int getEndMinute(){
         return endMinute;
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public void setDuration(int duration){
 
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     @Override
     public String toString(){
         if (minute == 0){
@@ -37,7 +85,12 @@ public enum Timeslot {
         }
         return hour + ":" + minute;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public String toString(int duration) {
         int endHour = hour;
         int endMinute = minute;

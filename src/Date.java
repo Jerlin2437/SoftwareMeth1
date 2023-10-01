@@ -1,6 +1,14 @@
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class represents a calendar date with methods to determine if input is valid,
+ * if a date is in the future, if a date is within six months of the current date,
+ * a method for comparing two dates, and methods for testing.
+ * @author Jason Lei
+ * @author Jerlin Yuen
+ */
+
 public class Date implements Comparable<Date> {
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
@@ -13,6 +21,12 @@ public class Date implements Comparable<Date> {
     private int month;
     private int day;
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public Date(int year, int month, int day) {
         this.year = year;
         this.month = month;
@@ -20,6 +34,12 @@ public class Date implements Comparable<Date> {
     }
 
     //within 6 months...make sure to go over all requirements/prereqs
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public boolean isValid() {
 
         if (year < 0 || month < 1 || month > 12)
@@ -100,6 +120,12 @@ public class Date implements Comparable<Date> {
 //    }
 
     //checks if date is a future date
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public boolean isFuture(){
 //        Calendar currentDate = Calendar.getInstance();
 //        Calendar eventDate = Calendar.getInstance();
@@ -130,12 +156,17 @@ public class Date implements Comparable<Date> {
     }
 
     //checks if no more than 6 months away
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public boolean isUnder6Months(){
         Calendar currentDate = Calendar.getInstance();
         Calendar eventDate = Calendar.getInstance();
         eventDate.set(year, month, day);
 
-        //change name of vars?
         int numOfMonths1 = currentDate.get(Calendar.YEAR) * 12 + currentDate.get(Calendar.MONTH);
         int numOfMonths2 = eventDate.get(Calendar.YEAR) * 12 + eventDate.get(Calendar.MONTH);
 
@@ -143,11 +174,21 @@ public class Date implements Comparable<Date> {
 
         return diffInMonths <= 6;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     private boolean isLeapYear() {
         return (year % QUADRENNIAL == 0 && year % CENTENNIAL != 0) || (year % QUATERCENTENNIAL == 0);
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     @Override
     public int compareTo(Date otherDate) {
         // Compare years
@@ -165,19 +206,34 @@ public class Date implements Comparable<Date> {
         // Months are equal, compare days
         return Integer.compare(this.day, otherDate.day);
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     @Override
     public String toString(){
         return month + "/" + day + "/" + year;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static void main(String[] args) {
         testDaysInFeb_Nonleap();
         testDaysInFeb_Leap();
         testMonth_OutOfRange();
     }
 
-    /** Test case #1 */
+    /**
+     * Test case #1
+     * @param
+     * @return
+     * @author
+     */
     private static void testDaysInFeb_Nonleap(){
         Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
         boolean expectedOutput = false;
@@ -186,7 +242,12 @@ public class Date implements Comparable<Date> {
         testResult(date, expectedOutput, actualOutput);
     }
 
-    /** Test case #2 */
+    /**
+     * Test case #2
+     * @param
+     * @return
+     * @author
+     */
     private static void testDaysInFeb_Leap(){
         Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
         boolean expectedOutput = true;
@@ -195,7 +256,12 @@ public class Date implements Comparable<Date> {
         testResult(date, expectedOutput, actualOutput);
     }
 
-    /** Test case #3 */
+    /**
+     * Test case #3
+     * @param
+     * @return
+     * @author
+     */
     private static void testMonth_OutOfRange(){
         Date date = new Date(2011, 13, 29); //test data --> invalid calendar date
         boolean expectedOutput = false;
@@ -204,6 +270,12 @@ public class Date implements Comparable<Date> {
         testResult(date, expectedOutput, actualOutput);
     }
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     private static void testResult(Date date, boolean expectedOutput, boolean actualOutput){
         System.out.println("Test input: " + date.toString());
         System.out.println("Expected output: " + expectedOutput);

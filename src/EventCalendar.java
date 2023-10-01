@@ -1,3 +1,11 @@
+/**
+ * This class manages a list/calendar of events with methods that allow for the addition,
+ * removal, and sorting and printing of the list of events ordered by criteria such as date,
+ * campus, and department.
+ * @author Jason Lei
+ * @author Jerlin Yuen
+ */
+
 public class EventCalendar {
     private Event [] events;
     private int numEvents;
@@ -6,16 +14,33 @@ public class EventCalendar {
 
     private int capacity = 4;
     private int size = 0;
+
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public EventCalendar(Event[] events, int numEvents) {
         this.events = events;
         this.numEvents = numEvents;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public EventCalendar() {
         events = new Event[4];
         numEvents = 0;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     private int find(Event event){
         for (int x = 0; x < size; x++){
             if (events[x] != null && events[x].equals(event))
@@ -23,7 +48,12 @@ public class EventCalendar {
         }
         return NOT_FOUND;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     private void grow() {
 //          this.events = new Event[this.events.length + 4];
         this.capacity += 4;
@@ -33,7 +63,12 @@ public class EventCalendar {
         }
         events = newEvents;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     //initial cap of 4, +4 whenever full
     public boolean add(Event event) {
         if (contains(event))
@@ -52,6 +87,12 @@ public class EventCalendar {
         }
         return false;
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public boolean remove(Event event){
         int index = find(event);
         if (index != NOT_FOUND){
@@ -64,12 +105,30 @@ public class EventCalendar {
         }
         return false; //event not found
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public boolean contains(Event event){
         return (find(event) != NOT_FOUND);
     }
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public boolean isEmpty() { return size == 0; }
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public void print(){
         if (isEmpty()){
             System.out.println("Event calendar is empty.");
@@ -81,6 +140,12 @@ public class EventCalendar {
             System.out.println("* end of event calendar *");
         }
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     //double check compareTo, should be right tho (for events - checks date AND timeslot)
     public void printByDate(){
         if (isEmpty()){
@@ -103,6 +168,12 @@ public class EventCalendar {
 
 
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     //order by campus and building/room
     public void printByCampus(){
         if (isEmpty()){
@@ -123,6 +194,12 @@ public class EventCalendar {
             print();
         }
     }
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     //order by department
     public void printByDepartment(){
         if (isEmpty()){
@@ -143,6 +220,12 @@ public class EventCalendar {
         }
     }
 
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static void main(String[] args) {
         EventCalendar eventCalendar = new EventCalendar();
 

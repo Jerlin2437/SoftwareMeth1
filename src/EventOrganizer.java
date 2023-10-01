@@ -1,15 +1,20 @@
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+ * This class represents a user interface to process user input from command lines. This program
+ * allows a user to add, cancel and remove, and sort and display events in an event calendar by
+ * various criteria such as by event date, campus, and department.
+ * @author Jerlin Yuen
+ * @author Jason Lei
+ */
+
 public class EventOrganizer {
     /**
-     * All commands
-     * R - cancel an event and remove from calendar
-     * P - display event calendar with current order
-     * PE - display event calendar sorted by event date and timeslot
-     * PC - display event calendar sorted by campus and building/room
-     * PD - display event calendar sorted by department in contact
-     * Q - stop execution and display "Event Organizer terminated."
+     * Description
+     * @param
+     * @return
+     * @author
      */
     public void run() {
         System.out.println("Event Organizer running....\n");
@@ -18,7 +23,12 @@ public class EventOrganizer {
         System.out.println("Event Organizer Terminated");
 
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public void scan(EventCalendar eventCalendar) {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
@@ -48,8 +58,12 @@ public class EventOrganizer {
         }
 
     }
-
-    //A 10/21/2023 afternoon hll114 cs cs@rutgers.edu 60
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static void addEvent(String line, EventCalendar eventCalendar) {
         Scanner lineScanner = new Scanner(line);
         lineScanner.next(); // Assuming this is used to skip some initial token (not clear from the context)
@@ -90,7 +104,12 @@ public class EventOrganizer {
         } else
             System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static void cancelEvent(String line, EventCalendar eventCalendar) {
         Scanner lineScanner = new Scanner(line);
         lineScanner.next(); // Assuming this is used to skip some initial token (not clear from the context)
@@ -120,7 +139,12 @@ public class EventOrganizer {
         }
     }
 
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static Contact extractContact(String departmentCode, String emailCode) {
         if (emailCode.endsWith("@rutgers.edu")) {
             switch (departmentCode) {
@@ -148,7 +172,12 @@ public class EventOrganizer {
         System.out.println("Invalid contact information!");
         return null;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static Location extractLocation(String locationCode) {
         switch (locationCode) {
             case "HLL114" -> {
@@ -175,7 +204,12 @@ public class EventOrganizer {
             }
         }
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static Timeslot extractTimeslot(String timeslot) {
         switch (timeslot) {
             case "MORNING" -> {
@@ -191,7 +225,12 @@ public class EventOrganizer {
         }
         return null;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static Date extractDate(String stringDate) {
         StringTokenizer tokenizer = new StringTokenizer(stringDate, "/");
         int month = Integer.parseInt(tokenizer.nextToken());
@@ -206,11 +245,21 @@ public class EventOrganizer {
             System.out.println(date.toString() + ": Event date must be within 6 months!");
         return date;
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static void errorMessages() {
 
     }
-
+    /**
+     * Description
+     * @param
+     * @return
+     * @author
+     */
     public static void main(String[] args) {
     }
 
