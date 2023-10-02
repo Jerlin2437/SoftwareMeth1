@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
  * This class represents a user interface to process user input from command lines. This program
  * allows a user to add, cancel and remove, and sort and display events in an event calendar by
  * various criteria such as by event date, campus, and department.
+ *
  * @author Jerlin Yuen, Jason Lei
  */
 
@@ -16,6 +17,7 @@ public class EventOrganizer {
     /**
      * Prints running/terminated statements
      * Creates new eventCalendar object and calls scan function
+     *
      * @author
      */
     public void run() {
@@ -25,9 +27,11 @@ public class EventOrganizer {
         System.out.println("Event Organizer Terminated");
 
     }
+
     /**
      * Creates new scanner object and cycles through each command line argument.
      * Tokenizes the first command and calls a different function based on each command
+     *
      * @param eventCalendar calendar of events
      * @author
      */
@@ -44,7 +48,7 @@ public class EventOrganizer {
                 continue;
             // Tokenize each line by reading each token
             String token = lineScanner.next();
-            if (x == 0){
+            if (x == 0) {
                 System.out.println(); //formatting
                 x++;
             }
@@ -64,10 +68,13 @@ public class EventOrganizer {
                 System.out.println(token + " is an invalid command!");
         }
     }
+
     /**
      * Adds an event to eventCalendar based on commandline input.
      * Cycles through each token and calls other functions to handle each string token before adding to eventCalendar
-     * @param line - event to be inputted into eventCalendar, eventCalendar - calendar of events
+     *
+     * @param line          - event to be inputted into eventCalendar
+     * @param eventCalendar - calendar of events
      * @author
      */
     public static void addEvent(String line, EventCalendar eventCalendar) {
@@ -107,10 +114,13 @@ public class EventOrganizer {
         } else
             System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
     }
+
     /**
      * Removes an event from eventCalendar based on commandline input.
      * Cycles through each token and calls other functions to handle each string token before adding to eventCalendar
-     * @param line - event to be removed from eventCalendar, eventCalendar - calendar of events
+     *
+     * @param line          - event to be removed from eventCalendar
+     * @param eventCalendar - calendar of events
      * @author
      */
     public static void cancelEvent(String line, EventCalendar eventCalendar) {
@@ -144,7 +154,9 @@ public class EventOrganizer {
 
     /**
      * Returns Contact object and checks for invalid inputs
-     * @param departmentCode - string of department acronym to be verified, emailCode - email to be verified
+     *
+     * @param departmentCode - string of department acronym to be verified
+     * @param emailCode      - email to be verified
      * @return returns a contact object if departmentCode/emailCode is valid or else returns null
      * @author
      */
@@ -175,8 +187,10 @@ public class EventOrganizer {
         System.out.println("Invalid contact information!");
         return null;
     }
+
     /**
      * Returns Location object and checks for invalid input
+     *
      * @param locationCode - a string of possible event locations
      * @return returns a Location object if locationCode is valid or else returns null
      * @author
@@ -207,8 +221,10 @@ public class EventOrganizer {
             }
         }
     }
+
     /**
      * Returns a Timeslot object and checks for invalid input
+     *
      * @param timeslot - a string of possible event timeslots
      * @return returns a Timeslot object if timeslot is valid or else returns null
      * @author
@@ -228,8 +244,10 @@ public class EventOrganizer {
         }
         return null;
     }
+
     /**
      * Returns a date object and checks for invalid input
+     *
      * @param stringDate - a string of possible event dates
      * @return returns a Date object if date is valid or else returns null
      * @author
@@ -248,7 +266,6 @@ public class EventOrganizer {
             System.out.println(date.toString() + ": Event date must be within 6 months!");
         return date;
     }
-
 
 
 }
