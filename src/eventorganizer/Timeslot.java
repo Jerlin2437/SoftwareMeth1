@@ -69,10 +69,6 @@ public enum Timeslot {
         return endMinute;
     }
 
-    public void setDuration(int duration) {
-
-    }
-
     /**
      * Returns textual representation of hour and minutes in hour:minute format
      *
