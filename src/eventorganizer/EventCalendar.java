@@ -1,3 +1,5 @@
+package eventorganizer;
+
 /**
  * This class manages a list/calendar of events with methods that allow for the addition,
  * removal, and sorting and printing of the list of events ordered by criteria such as date,
@@ -49,7 +51,6 @@ public class EventCalendar {
      * @author Jason Lei, Jerlin Yuen
      */
     private void grow() {
-//          this.events = new Event[this.events.length + 4];
         this.capacity += 4;
         Event [] newEvents = new Event[this.capacity];
         for (int i = 0; i < size; i++) {

@@ -1,4 +1,4 @@
-import java.util.Objects;
+package eventorganizer;
 
 /**
  * This class represents an event with attributes including: date, timeslot, location,

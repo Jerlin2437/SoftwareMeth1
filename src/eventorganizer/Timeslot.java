@@ -1,3 +1,5 @@
+package eventorganizer;
+
 /**
  * This enum class provides a list of specified timeslots with methods to convert
  * and change time durations.

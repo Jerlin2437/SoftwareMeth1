@@ -1,3 +1,5 @@
+package eventorganizer;
+
 import java.util.Calendar;
 /**
  * This class represents a calendar date with methods to determine if input is valid,

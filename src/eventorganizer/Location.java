@@ -1,3 +1,5 @@
+package eventorganizer;
+
 /**
  * This enum class provides a list of specified locations, each with a corresponding
  * classroom and campus.

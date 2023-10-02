@@ -1,7 +1,9 @@
-/**
+package eventorganizer; /**
  * This is a driver class that is used to run and test software
  * @author Jason Lei, Jerlin Yuen
  */
+
+import eventorganizer.EventOrganizer;
 
 /**
  * testbed, driver class to test software methods

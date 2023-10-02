@@ -1,3 +1,7 @@
+package eventorganizer;
+
+import eventorganizer.*;
+
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -30,6 +34,7 @@ public class EventOrganizer {
      */
     public void scan(EventCalendar eventCalendar) {
         Scanner scanner = new Scanner(System.in);
+        int x = 0;
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             if (line.equals("Q")) {
@@ -40,6 +45,10 @@ public class EventOrganizer {
                 continue;
             // Tokenize each line by reading each token
             String token = lineScanner.next();
+            if (x == 0){
+                System.out.println();
+                x++;
+            }
             if (token.equals("A")) {
                 addEvent(line, eventCalendar);
             } else if (token.equals("R")) {
@@ -55,7 +64,6 @@ public class EventOrganizer {
             } else
                 System.out.println(token + " is an invalid command!");
         }
-
     }
     /**
      * Description
@@ -68,28 +76,25 @@ public class EventOrganizer {
         lineScanner.next(); // Assuming this is used to skip some initial token (not clear from the context)
 
         Date date = extractDate(lineScanner.next());
-
         if (!date.isValid() || !date.isFuture() || !date.isUnder6Months()) {
             return;  // Guard clause
         }
 
         String timeslotToken = lineScanner.next().toUpperCase();
         Timeslot timeslot = extractTimeslot(timeslotToken);
-
         if (timeslot == null) {
             return;  // Guard clause
         }
 
         String locationToken = lineScanner.next().toUpperCase();
         Location location = extractLocation(locationToken);
-
         if (location == null) {
             return;
         }
+
         String departmentToken = lineScanner.next().toUpperCase();
         String emailToken = lineScanner.next();
         Contact contact = extractContact(departmentToken, emailToken);
-
         if (contact == null) {
             return;
         }

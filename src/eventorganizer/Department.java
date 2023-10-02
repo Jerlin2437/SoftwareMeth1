@@ -1,3 +1,5 @@
+package eventorganizer;
+
 /**
  * This enum class provides a list of specified departments containing a corresponding acronym
  * and the full name of the department.

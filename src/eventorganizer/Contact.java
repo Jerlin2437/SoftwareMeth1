@@ -1,3 +1,5 @@
+package eventorganizer;
+
 /**
  * This class represents a contact that provides a corresponding department and email address.
  * There is a method to determine the validity of the email format and associated department given input.
