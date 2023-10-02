@@ -1,8 +1,7 @@
 /**
  * This enum class provides a list of specified departments containing a corresponding acronym
  * and the full name of the department.
- * @author Jerlin Yuen
- * @author Jason Lei
+ * @author Jerlin Yuen, Jason Lei
  */
 
 public enum Department {
@@ -16,38 +15,35 @@ public enum Department {
     private final String fullName;
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Parameterized constructor
+     * @param acronym - department acronym
+     * @param fullName - full name of department
+     * @author Jerlin Yuen
      */
     Department(String acronym, String fullName) {
         this.acronym = acronym;
         this.fullName = fullName;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return acronym
+     * @author Jerlin Yuen
      */
     public String getAcronym(){
         return acronym;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return full name of department
+     * @author Jason Lei
      */
     public String getFullName() {
         return fullName;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Returns textual representation of a department's full name
+     * @return full name of department in text format
+     * @author Jerlin Yuen
      */
     @Override
     public String toString() {

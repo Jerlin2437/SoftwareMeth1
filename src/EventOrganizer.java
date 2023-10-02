@@ -5,8 +5,7 @@ import java.util.StringTokenizer;
  * This class represents a user interface to process user input from command lines. This program
  * allows a user to add, cancel and remove, and sort and display events in an event calendar by
  * various criteria such as by event date, campus, and department.
- * @author Jerlin Yuen
- * @author Jason Lei
+ * @author Jerlin Yuen, Jason Lei
  */
 
 public class EventOrganizer {

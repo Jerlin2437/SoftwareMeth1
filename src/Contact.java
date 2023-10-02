@@ -1,8 +1,7 @@
 /**
  * This class represents a contact that provides a corresponding department and email address.
  * There is a method to determine the validity of the email format and associated department given input.
- * @author Jerlin Yuen
- * @author Jason Lei
+ * @author Jerlin Yuen, Jason Lei
  */
 
 public class Contact {
@@ -10,29 +9,27 @@ public class Contact {
     private String email;
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return department
+     * @author Jason Lei
      */
     public Department getDepartment() {
         return department;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Parameterized constructor
+     * @param department - specific department
+     * @param email - specific email
+     * @author Jerlin Yuen
      */
     public Contact(Department department, String email) {
         this.department = department;
         this.email = email;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Checks validity of department name and email
+     * @return true if department name and email is valid, false otherwise
+     * @author Jerlin Yuen
      */
     public boolean isValid(){
         int length = email.length();
@@ -42,10 +39,9 @@ public class Contact {
         return isDepartmentNameValid && domainName.equals("@rutgers.edu");
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Returns textual representation of department and email
+     * @return department and email in text format
+     * @author Jason Lei
      */
     @Override
     public String toString(){

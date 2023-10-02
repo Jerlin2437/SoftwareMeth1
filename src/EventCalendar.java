@@ -2,44 +2,39 @@
  * This class manages a list/calendar of events with methods that allow for the addition,
  * removal, and sorting and printing of the list of events ordered by criteria such as date,
  * campus, and department.
- * @author Jason Lei
- * @author Jerlin Yuen
+ * @author Jason Lei, Jerlin Yuen
  */
 
 public class EventCalendar {
     private Event [] events;
     private int numEvents;
-
     private final int NOT_FOUND = -1;
-
     private int capacity = 4;
     private int size = 0;
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Parameterized constructor
+     * @param events - array holding the list of events
+     * @param numEvents - current number of events in the array
+     * @author Jerlin Yuen
      */
     public EventCalendar(Event[] events, int numEvents) {
         this.events = events;
         this.numEvents = numEvents;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Default constructor; no-args constructor
+     * @author Jason Lei
      */
     public EventCalendar() {
         events = new Event[4];
         numEvents = 0;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Searches an event in the list events
+     * @param event - specific event
+     * @return x, index of the event in the list if specified event is present, NOT_FOUND (-1) if event is not present
+     * @author Jerlin Yuen, Jason Lei
      */
     private int find(Event event){
         for (int x = 0; x < size; x++){
@@ -49,10 +44,9 @@ public class EventCalendar {
         return NOT_FOUND;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Increases the capacity of the events list by 4
+     * @return events list with a capacity that has been increased by 4
+     * @author Jason Lei, Jerlin Yuen
      */
     private void grow() {
 //          this.events = new Event[this.events.length + 4];
@@ -64,10 +58,10 @@ public class EventCalendar {
         events = newEvents;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Adds an event to events list
+     * @param event - specific event
+     * @return true if event has been added, false if event already contains the event
+     * @author Jason Lei
      */
     //initial cap of 4, +4 whenever full
     public boolean add(Event event) {
@@ -88,10 +82,10 @@ public class EventCalendar {
         return false;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Removes an event from events list
+     * @param event - specific event
+     * @return true if event has been found and removed, false if event was not found
+     * @author Jason Lei
      */
     public boolean remove(Event event){
         int index = find(event);
@@ -106,28 +100,26 @@ public class EventCalendar {
         return false; //event not found
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Checks events list to see if specific event is present
+     * @param event - specific event
+     * @return true if event is present, false if event is not present
+     * @author Jason Lei
      */
     public boolean contains(Event event){
         return (find(event) != NOT_FOUND);
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Checks events list to see if it is empty
+     * @return true if events list is empty, false if events list is not empty
+     * @author Jason Lei
      */
     public boolean isEmpty() { return size == 0; }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Displays each event in the events list as is
+     * @return "Event calendar is empty" if events list is empty, events list if events list is not empty
+     * @author Jason Lei, Jerlin Yuen
      */
     public void print(){
         if (isEmpty()){
@@ -141,12 +133,10 @@ public class EventCalendar {
         }
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Displays each event in the events list, ordered by date and timeslot
+     * @return "Event calendar is empty" if events list is empty, events list ordered by date and timeslot if events list is not empty
+     * @author Jason Lei
      */
-    //double check compareTo, should be right tho (for events - checks date AND timeslot)
     public void printByDate(){
         if (isEmpty()){
             System.out.println("Event calendar is empty.");
@@ -169,12 +159,10 @@ public class EventCalendar {
 
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Displays each event in the events list, ordered by campus and building/room
+     * @return "Event calendar is empty" if events list is empty, events list ordered by campus and building/room if events list is not empty
+     * @author Jason Lei
      */
-    //order by campus and building/room
     public void printByCampus(){
         if (isEmpty()){
             System.out.println("Event calendar is empty.");
@@ -195,10 +183,9 @@ public class EventCalendar {
         }
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Displays each event in the events list, ordered by department
+     * @return "Event calendar is empty" if events list is empty, events list ordered by department if events list is not empty
+     * @author Jason Lei
      */
     //order by department
     public void printByDepartment(){
@@ -221,10 +208,9 @@ public class EventCalendar {
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Testbed main, as the driver to test the public methods
+     * @param args - input
+     * @author Jason Lei
      */
     public static void main(String[] args) {
         EventCalendar eventCalendar = new EventCalendar();

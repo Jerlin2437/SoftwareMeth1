@@ -1,8 +1,7 @@
 /**
  * This enum class provides a list of specified timeslots with methods to convert
  * and change time durations.
- * @author Jerlin Yuen
- * @author Jason Lei
+ * @author Jerlin Yuen, Jason Lei
  */
 
 public enum Timeslot {
@@ -16,10 +15,10 @@ public enum Timeslot {
     private int endMinute;
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Parameterized constructor
+     * @param hour - specific hour value
+     * @param minute - specific minute value
+     * @author Jerlin Yuen
      */
     Timeslot(int hour, int minute) {
         this.hour = hour;
@@ -27,56 +26,46 @@ public enum Timeslot {
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return hour
+     * @author Jason Lei
      */
     public int getHour() {
         return hour;
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return minute
+     * @author Jason Lei
      */
     public int getMinute() {
         return minute;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return end time hour
+     * @author Jerlin Yuen
      */
     public int getEndHour(){
         return endHour;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return end time minute
+     * @author Jerlin Yuen
      */
     public int getEndMinute(){
         return endMinute;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
+
     public void setDuration(int duration){
 
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Returns textual representation of hour and minutes in hour:minute format
+     * @return hours and minutes in text format
+     * @author Jason Lei
      */
     @Override
     public String toString(){
@@ -86,10 +75,10 @@ public enum Timeslot {
         return hour + ":" + minute;
     }
     /**
-     * Description
-     * @param
+     * Overloaded methodm returns textual representation of hour and minutes, including end hour and end minutes for an event's end time
+     * @param duration - time in minutes for a specific event
      * @return
-     * @author
+     * @author Jerlin Yuen
      */
     public String toString(int duration) {
         int endHour = hour;

@@ -1,8 +1,7 @@
 /**
  * This enum class provides a list of specified locations, each with a corresponding
  * classroom and campus.
- * @author Jerlin Yuen
- * @author Jason Lei
+ * @author Jerlin Yuen, Jason Lei
  */
 
 public enum Location {
@@ -16,38 +15,35 @@ public enum Location {
     private final String classroom;
     private final String campus;
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Parameterized constructor
+     * @param classroom - specific classroom
+     * @param campus - specific campus
+     * @author Jerlin Yuen
      */
     Location(String classroom, String campus){
         this.classroom = classroom;
         this.campus = campus;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return classroom
+     * @author Jerlin Yuen
      */
     public String getClassroom() {
         return classroom;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return campus
+     * @author Jason Lei
      */
     public String getCampus() {
         return campus;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Returns textual representation of classroom and campus
+     * @return classroom and campus in text format
+     * @author Jerlin Yuen
      */
     @Override
     public String toString() {

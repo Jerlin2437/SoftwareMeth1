@@ -4,29 +4,19 @@ import java.util.Objects;
  * This class represents an event with attributes including: date, timeslot, location,
  * contact information, and duration. This class contains methods for comparing events
  * based on these attributes using the equals() and compareTo() methods.
- * @author Jason Lei
- * @author Jerlin Yuen
+ * @author Jason Lei, Jerlin Yuen
  */
 
 public class Event implements Comparable<Event>{
-
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
-    private Date date;
+    private Date date; //event date
     private Timeslot startTime;
     private Location location;
-    private Contact contact;
-    private int duration;
+    private Contact contact; //includes department name and email
+    private int duration; //in minutes
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Default constructor; no-args constructor
+     * @author Jason Lei
      */
     public Event(){
         //set initial values for the instance variables.
@@ -36,11 +26,13 @@ public class Event implements Comparable<Event>{
         contact = null;
         duration = 0;
     }
+
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Parameterized constructor
+     * @param date - event date
+     * @param startTime - starting time
+     * @param location - classroom and campus
+     * @author Jerlin Yuen
      */
     public Event(Date date, Timeslot startTime, Location location) {
         this.date = date;
@@ -49,10 +41,13 @@ public class Event implements Comparable<Event>{
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Overloading constructor
+     * @param date - event date
+     * @param startTime - starting time
+     * @param location - classroom and campus
+     * @param contact - department and email
+     * @param duration - time in minutes
+     * @author Jason Lei
      */
     public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
         this.date = date;
@@ -61,103 +56,77 @@ public class Event implements Comparable<Event>{
         this.contact = contact;
         this.duration = duration;
     }
+
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return date
+     * @author Jason Lei
      */
     public Date getDate() {
         return date;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
+
     public void setDate(Date date) {
         this.date = date;
     }
+
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return startTime
+     * @author Jason Lei
      */
     public Timeslot getStartTime() {
         return startTime;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
+
     public void setStartTime(Timeslot startTime) {
         this.startTime = startTime;
     }
+
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return location
+     * @author Jason Lei
      */
     public Location getLocation() {
         return location;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
+
     public void setLocation(Location location) {
         this.location = location;
     }
+
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return contact
+     * @author Jason Lei
      */
     public Contact getContact() {
         return contact;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
+
     public void setContact(Contact contact) {
         this.contact = contact;
     }
+
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Getter method (accessor)
+     * @return duration
+     * @author Jason Lei
      */
     public int getDuration() {
         return duration;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
+
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    //The equals() method returns true if two dates, timeslots and locations are equal.
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * The equals() method determines if two dates, timeslots and locations of an event are equal.
+     * @param obj - event
+     * @return true, if two dates, timeslots, and locations are equal; false otherwise
+     * @author Jason Lei
      */
     @Override
     public boolean equals(Object obj){
@@ -179,10 +148,10 @@ public class Event implements Comparable<Event>{
 
     //compare event date and timeslot
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * The compareTo() method first compares the dates of two events, then the timeslots if the dates are the same
+     * @param event - specific event
+     * @return 0 if the dates and timeslots are the same, 1 if a date/timeslot is larger than the other, -1 if a date/timeslot is smaller than the other
+     * @author Jerlin Yuen
      */
     @Override
     public int compareTo(Event event) {
@@ -201,10 +170,9 @@ public class Event implements Comparable<Event>{
         return 0;
     }
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * toString() returns a textual representation of an event
+     * @return event in specific textual format
+     * @author Jason Lei, Jerlin Yuen
      */
     @Override
     public String toString() {
@@ -217,10 +185,10 @@ public class Event implements Comparable<Event>{
 
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * Testbed main, as the driver to test public methods
+     * @param args - input
+     * @return results of testEquals() and testCompareTo()
+     * @author Jason Lei
      */
     public static void main(String[] args) {
         testEquals();
@@ -228,10 +196,9 @@ public class Event implements Comparable<Event>{
     }
 
     /**
-     * Test case #1
-     * @param
-     * @return
-     * @author
+     * Test case #1 - checks if two dates, timeslots, and locations are equal
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
      */
 
     private static void testEquals(){
@@ -251,12 +218,10 @@ public class Event implements Comparable<Event>{
     }
 
     /**
-     * Test case #2
-     * @param
-     * @return
-     * @author
+     * Test case #2 - compares dates, then compares timeslots if the dates are the same
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
      */
-    //The compareTo() method compares the dates first, then the timeslots if the dates are the same.
     private static void testCompareTo(){
         Date date1 = new Date(2023, 12, 12);
         Date date2 = new Date(2023, 11, 12);
@@ -272,12 +237,13 @@ public class Event implements Comparable<Event>{
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * testResult() overloaded method to test equals() method
+     * @param event - specific event
+     * @param expectedOutput - intended result
+     * @param actualOutput - actual result
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
      */
-    //to test equals method
     private static void testResult(Event event, boolean expectedOutput, boolean actualOutput){
         System.out.println("Test input: " + event.toString());
         System.out.println("Expected output: " + expectedOutput);
@@ -290,12 +256,13 @@ public class Event implements Comparable<Event>{
     }
 
     /**
-     * Description
-     * @param
-     * @return
-     * @author
+     * testResult() overloaded method to test compareTo() method
+     * @param event - specific event
+     * @param expectedOutput - intended result
+     * @param actualOutput - actual result
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
      */
-    //to test compareTo method
     private static void testResult(Event event, int expectedOutput, int actualOutput){
         System.out.println("Test input: " + event.toString());
         System.out.println("Expected output: " + expectedOutput);
