@@ -15,6 +15,12 @@ import java.util.StringTokenizer;
 
 public class EventOrganizer {
     /**
+     * Default constructor 
+     */
+    public EventOrganizer() {
+    }
+
+    /**
      * Prints running/terminated statements
      * Creates new eventCalendar object and calls scan function
      *
