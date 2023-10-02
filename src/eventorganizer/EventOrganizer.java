@@ -14,9 +14,8 @@ import java.util.StringTokenizer;
 
 public class EventOrganizer {
     /**
-     * Description
-     * @param
-     * @return
+     * Prints running/terminated statements
+     * Creates new eventCalendar object and calls scan function
      * @author
      */
     public void run() {
@@ -27,9 +26,9 @@ public class EventOrganizer {
 
     }
     /**
-     * Description
-     * @param
-     * @return
+     * Creates new scanner object and cycles through each command line argument.
+     * Tokenizes the first command and calls a different function based on each command
+     * @param eventCalendar calendar of events
      * @author
      */
     public void scan(EventCalendar eventCalendar) {
@@ -46,7 +45,7 @@ public class EventOrganizer {
             // Tokenize each line by reading each token
             String token = lineScanner.next();
             if (x == 0){
-                System.out.println();
+                System.out.println(); //formatting
                 x++;
             }
             if (token.equals("A")) {
@@ -66,9 +65,9 @@ public class EventOrganizer {
         }
     }
     /**
-     * Description
-     * @param
-     * @return
+     * Adds an event to eventCalendar based on commandline input.
+     * Cycles through each token and calls other functions to handle each string token before adding to eventCalendar
+     * @param line - event to be inputted into eventCalendar, eventCalendar - calendar of events
      * @author
      */
     public static void addEvent(String line, EventCalendar eventCalendar) {
@@ -109,9 +108,9 @@ public class EventOrganizer {
             System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
     }
     /**
-     * Description
-     * @param
-     * @return
+     * Removes an event from eventCalendar based on commandline input.
+     * Cycles through each token and calls other functions to handle each string token before adding to eventCalendar
+     * @param line - event to be removed from eventCalendar, eventCalendar - calendar of events
      * @author
      */
     public static void cancelEvent(String line, EventCalendar eventCalendar) {
@@ -144,9 +143,9 @@ public class EventOrganizer {
     }
 
     /**
-     * Description
-     * @param
-     * @return
+     * Returns Contact object and checks for invalid inputs
+     * @param departmentCode - string of department acronym to be verified, emailCode - email to be verified
+     * @return returns a contact object if departmentCode/emailCode is valid or else returns null
      * @author
      */
     public static Contact extractContact(String departmentCode, String emailCode) {
@@ -177,9 +176,9 @@ public class EventOrganizer {
         return null;
     }
     /**
-     * Description
-     * @param
-     * @return
+     * Returns Location object and checks for invalid input
+     * @param locationCode - a string of possible event locations
+     * @return returns a Location object if locationCode is valid or else returns null
      * @author
      */
     public static Location extractLocation(String locationCode) {
@@ -209,9 +208,9 @@ public class EventOrganizer {
         }
     }
     /**
-     * Description
-     * @param
-     * @return
+     * Returns a Timeslot object and checks for invalid input
+     * @param timeslot - a string of possible event timeslots
+     * @return returns a Timeslot object if timeslot is valid or else returns null
      * @author
      */
     public static Timeslot extractTimeslot(String timeslot) {
@@ -230,9 +229,9 @@ public class EventOrganizer {
         return null;
     }
     /**
-     * Description
-     * @param
-     * @return
+     * Returns a date object and checks for invalid input
+     * @param stringDate - a string of possible event dates
+     * @return returns a Date object if date is valid or else returns null
      * @author
      */
     public static Date extractDate(String stringDate) {
@@ -249,22 +248,7 @@ public class EventOrganizer {
             System.out.println(date.toString() + ": Event date must be within 6 months!");
         return date;
     }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
-    public static void errorMessages() {
 
-    }
-    /**
-     * Description
-     * @param
-     * @return
-     * @author
-     */
-    public static void main(String[] args) {
-    }
+
 
 }
