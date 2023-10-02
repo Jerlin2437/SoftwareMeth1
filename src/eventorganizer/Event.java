@@ -196,6 +196,7 @@ public class Event implements Comparable<Event>{
         testDiffLocation();
         testDiffDateTime();
         testAllEqual();
+        testDiffDateLoc();
         testCompareTo();
     }
 
@@ -299,7 +300,26 @@ public class Event implements Comparable<Event>{
 
         boolean expectedOutput = true;
         boolean actualOutput = event1.equals(event2);
-        System.out.println("**Test case #1: checks if two dates, timeslots, and locations are equal");
+        System.out.println("**Test case #5: checks if two dates, timeslots, and locations are equal");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #6 - two dates and two locations are different/not equal
+     * @return expected output, actual output, whether method passed the test case
+     */
+    private static void testDiffDateLoc(){
+        Date date1 = new Date(2023, 6, 23);
+        Date date2 = new Date(2023, 4, 27);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
+
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.ARC103, newContact2, 60);
+
+        boolean expectedOutput = false;
+        boolean actualOutput = event1.equals(event2);
+        System.out.println("**Test case #6: two dates and two locations are different/not equal");
         testResult(event1, expectedOutput, actualOutput);
     }
 

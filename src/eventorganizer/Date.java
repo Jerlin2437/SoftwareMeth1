@@ -159,6 +159,7 @@ public class Date implements Comparable<Date> {
         testDaysInFeb_Leap();
         testDaysInJan();
         testDaysInApril();
+        testDaysInSep();
     }
 
     /**
@@ -233,13 +234,24 @@ public class Date implements Comparable<Date> {
         testResult(date, expectedOutput, actualOutput);
     }
 
+    /**
+     * Test case #7 - # of days in September is 30.
+     * @author Jason Lei
+     */
+    private static void testDaysInSep(){
+        Date date = new Date(2023, 9, 31); //test data --> invalid calendar date
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #7: # of days in September is 30.");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
 
     /**
-     * Description
+     * Testbed output
      * @param date - event date
      * @param expectedOutput - intended result
      * @param actualOutput - expected result
-     * @author Jason Lei
      */
     private static void testResult(Date date, boolean expectedOutput, boolean actualOutput){
         System.out.println("Test input: " + date.toString());
