@@ -175,49 +175,86 @@ public class Date implements Comparable<Date> {
      * @author Jason Lei
      */
     public static void main(String[] args) {
+        testYear_OutOfRange();
+        testMonth_OutOfRange();
         testDaysInFeb_Nonleap();
         testDaysInFeb_Leap();
-        testMonth_OutOfRange();
+        testDaysInJan();
+        testDaysInApril();
     }
 
     /**
-     * Test case #1 - # of days in Feb. in a non-leap year is 28
-     * @return
+     * Test case #1 - date cannot have a year before 0.
+     * @author Jason Lei
+     */
+    private static void testYear_OutOfRange(){
+        Date date = new Date(-1, 12, 23); //test data --> invalid calendar date
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #1: date cannot have a year before 0.");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #2 - # of months in a year is 12, value of month cannot be more than 12.
+     * @author Jason Lei
+     */
+    private static void testMonth_OutOfRange(){
+        Date date = new Date(2023, 13, 29); //test data --> invalid calendar date
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #2: # of months in a year is 12, month cannot be more than 12.");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #3 - # of days in Feb. in a non-leap year is 28
      * @author Jason Lei
      */
     private static void testDaysInFeb_Nonleap(){
         Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
         boolean expectedOutput = false;
         boolean actualOutput = date.isValid();
-        System.out.println("**Test case #1: # of days in Feb. in a non-leap year is 28");
+        System.out.println("**Test case #3: # of days in Feb. in a non-leap year is 28");
         testResult(date, expectedOutput, actualOutput);
     }
 
     /**
-     * Test case #2 - # of days in Feb. in a leap year is 29
-     * @return
+     * Test case #4 - # of days in Feb. in a leap year is 29
      * @author Jason Lei
      */
     private static void testDaysInFeb_Leap(){
-        Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
+        Date date = new Date(2012, 2, 29); //test data --> invalid calendar date
         boolean expectedOutput = true;
         boolean actualOutput = date.isValid();
-        System.out.println("**Test case #2: # of days in Feb. in a leap year is 29");
+        System.out.println("**Test case #4: # of days in Feb. in a leap year is 29");
         testResult(date, expectedOutput, actualOutput);
     }
 
     /**
-     * Test case #3 - # of months in a year is 12, month cannot be more than 12.
-     * @return
+     * Test case #5 - # of days in January is 31.
      * @author Jason Lei
      */
-    private static void testMonth_OutOfRange(){
-        Date date = new Date(2011, 13, 29); //test data --> invalid calendar date
-        boolean expectedOutput = false;
+    private static void testDaysInJan(){
+        Date date = new Date(2023, 1, 31); //test data --> invalid calendar date
+        boolean expectedOutput = true;
         boolean actualOutput = date.isValid();
-        System.out.println("**Test case #3: # of months in a year is 12, month cannot be more than 12.");
+        System.out.println("**Test case #5: # of days in January is 31.");
         testResult(date, expectedOutput, actualOutput);
     }
+
+    /**
+     * Test case #6 - # of days in April is 30.
+     * @author Jason Lei
+     */
+    private static void testDaysInApril(){
+        Date date = new Date(2012, 4, 31); //test data --> invalid calendar date
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case #6: # of days in April is 30.");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
 
     /**
      * Description

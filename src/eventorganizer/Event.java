@@ -191,23 +191,109 @@ public class Event implements Comparable<Event>{
      * @author Jason Lei
      */
     public static void main(String[] args) {
-        testEquals();
+        testDiffDate();
+        testDiffTime();
+        testDiffLocation();
+        testDiffDateTime();
+        testAllEqual();
         testCompareTo();
     }
 
     /**
-     * Test case #1 - checks if two dates, timeslots, and locations are equal
+     * Test case #1 - two dates are different/not equal
      * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
 
-    private static void testEquals(){
+    private static void testDiffDate(){
+        Date date1 = new Date(2023, 11, 14);
+        Date date2 = new Date(2023, 12, 15);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
+
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225, newContact2, 60);
+
+        boolean expectedOutput = false;
+        boolean actualOutput = event1.equals(event2);
+        System.out.println("**Test case #1: two dates are different/not equal");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #2 - two timeslots are different/not equal
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
+     */
+
+    private static void testDiffTime(){
         Date date1 = new Date(2023, 12, 15);
         Date date2 = new Date(2023, 12, 15);
         Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
         Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
 
-        //check this, why false --> b/c dates don't compare right
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.AFTERNOON, Location.AB2225, newContact2, 60);
+
+        boolean expectedOutput = false;
+        boolean actualOutput = event1.equals(event2);
+        System.out.println("**Test case #2: two timeslots are different/not equal");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #3 - two locations are different/not equal
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
+     */
+
+    private static void testDiffLocation(){
+        Date date1 = new Date(2023, 12, 15);
+        Date date2 = new Date(2023, 12, 15);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
+
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.HLL114, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225, newContact2, 60);
+
+        boolean expectedOutput = false;
+        boolean actualOutput = event1.equals(event2);
+        System.out.println("**Test case #3: two locations are different/not equal");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #4 - two dates and two timeslots are different/not equal
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
+     */
+
+    private static void testDiffDateTime(){
+        Date date1 = new Date(2023, 12, 15);
+        Date date2 = new Date(2023, 11, 14);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
+
+        Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
+        Event event2 = new Event(date2, Timeslot.EVENING, Location.AB2225, newContact2, 60);
+
+        boolean expectedOutput = false;
+        boolean actualOutput = event1.equals(event2);
+        System.out.println("**Test case #4: two dates and two timeslots are different/not equal");
+        testResult(event1, expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #5 - two dates, two timeslots, and two locations are the same/equal
+     * @return expected output, actual output, whether method passed the test case
+     * @author Jason Lei
+     */
+    private static void testAllEqual(){
+        Date date1 = new Date(2023, 12, 15);
+        Date date2 = new Date(2023, 12, 15);
+        Contact newContact = new Contact(Department.CS, "cs@rutgers.edu");
+        Contact newContact2 = new Contact(Department.CS, "cs@rutgers.edu");
+
         Event event1 = new Event(date1, Timeslot.MORNING, Location.AB2225, newContact, 60);
         Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225, newContact2, 60);
 
@@ -218,7 +304,7 @@ public class Event implements Comparable<Event>{
     }
 
     /**
-     * Test case #2 - compares dates, then compares timeslots if the dates are the same
+     * Test case #6 - compares dates, then compares timeslots if the dates are the same
      * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
@@ -232,7 +318,7 @@ public class Event implements Comparable<Event>{
         Event event2 = new Event(date2, Timeslot.MORNING, Location.AB2225, newContact2, 60);
         int expectedOutput = 1;
         int actualOutput = event1.compareTo(event2);
-        System.out.println("**Test case #2: compares dates, then the timeslots if the dates are the same");
+        System.out.println("**Test case #6: compares dates, then the timeslots if the dates are the same");
         testResult(event1, expectedOutput, actualOutput);
     }
 
