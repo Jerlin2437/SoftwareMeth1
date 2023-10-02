@@ -1,12 +1,10 @@
 package eventorganizer;
 
 import java.util.Calendar;
-
 /**
  * This class represents a calendar date with methods to determine if input is valid,
  * if a date is in the future, if a date is within six months of the current date,
  * a method for comparing two dates, and methods for testing.
- *
  * @author Jason Lei, Jerlin Yuen
  */
 
@@ -24,10 +22,9 @@ public class Date implements Comparable<Date> {
 
     /**
      * Parameterized constructor
-     *
-     * @param year  - date's year
+     * @param year - date's year
      * @param month - date's month
-     * @param day   - date's day
+     * @param day - date's day
      * @author Jerlin Yuen
      */
     public Date(int year, int month, int day) {
@@ -40,7 +37,6 @@ public class Date implements Comparable<Date> {
      * Determines if a date is a valid calendar date based on different criteria such as the number of days in a month,
      * whether a year is a leap or non-leap year, if the year is a negative value, month is a value less than 1, and if
      * month is a value greater than 12.
-     *
      * @return true if the date is a valid calendar date, false otherwise
      * @author Jerlin Yuen
      */
@@ -84,11 +80,10 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks to see if an event date is a future date
-     *
      * @return true if the date is a future date, false otherwise
      * @author Jason Lei
      */
-    public boolean isFuture() {
+    public boolean isFuture(){
         Calendar currentDate = Calendar.getInstance();
         Date today = new Date(currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH) + 1, currentDate.get(Calendar.DAY_OF_MONTH));
 
@@ -97,11 +92,10 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks to see if an event date is no more than 6 months away from the current date
-     *
      * @return true if the date is less than or equal to 6 months away from the current date, false otherwise
      * @author Jason Lei
      */
-    public boolean isUnder6Months() {
+    public boolean isUnder6Months(){
         Calendar currentDate = Calendar.getInstance();
         Calendar eventDate = Calendar.getInstance();
         eventDate.set(year, month, day);
@@ -113,20 +107,16 @@ public class Date implements Comparable<Date> {
 
         return diffInMonths <= 6;
     }
-
     /**
      * Checks to see if a year is a leap year or a non-leap year
-     *
      * @return true if the year is a leap year, false otherwise
      * @author Jerlin Yuen
      */
     private boolean isLeapYear() {
         return (year % QUADRENNIAL == 0 && year % CENTENNIAL != 0) || (year % QUATERCENTENNIAL == 0);
     }
-
     /**
      * Compares the years, months, and days of two dates
-     *
      * @param otherDate - second date to be compared to
      * @return 0 if years, months, and days are the same, -1 if year, months, or days is before the second date, 1 if year, months, or days is after the second date
      * @author Jerlin Yuen
@@ -148,21 +138,17 @@ public class Date implements Comparable<Date> {
         // Months are equal, compare days
         return Integer.compare(this.day, otherDate.day);
     }
-
     /**
      * Returns textual representation of date in Month/Day/Year
-     *
      * @return textual representation of date
      * @author Jason Lei
      */
     @Override
-    public String toString() {
+    public String toString(){
         return month + "/" + day + "/" + year;
     }
-
     /**
      * Testbed main, as the driver to test the public methods
-     *
      * @param args - input
      * @author Jason Lei
      */
@@ -174,11 +160,10 @@ public class Date implements Comparable<Date> {
 
     /**
      * Test case #1 - # of days in Feb. in a non-leap year is 28
-     *
      * @return
      * @author Jason Lei
      */
-    private static void testDaysInFeb_Nonleap() {
+    private static void testDaysInFeb_Nonleap(){
         Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
         boolean expectedOutput = false;
         boolean actualOutput = date.isValid();
@@ -188,11 +173,10 @@ public class Date implements Comparable<Date> {
 
     /**
      * Test case #2 - # of days in Feb. in a leap year is 29
-     *
      * @return
      * @author Jason Lei
      */
-    private static void testDaysInFeb_Leap() {
+    private static void testDaysInFeb_Leap(){
         Date date = new Date(2011, 2, 29); //test data --> invalid calendar date
         boolean expectedOutput = true;
         boolean actualOutput = date.isValid();
@@ -202,11 +186,10 @@ public class Date implements Comparable<Date> {
 
     /**
      * Test case #3 - # of months in a year is 12, month cannot be more than 12.
-     *
      * @return
      * @author Jason Lei
      */
-    private static void testMonth_OutOfRange() {
+    private static void testMonth_OutOfRange(){
         Date date = new Date(2011, 13, 29); //test data --> invalid calendar date
         boolean expectedOutput = false;
         boolean actualOutput = date.isValid();
@@ -216,19 +199,18 @@ public class Date implements Comparable<Date> {
 
     /**
      * Description
-     *
-     * @param date           - event date
+     * @param date - event date
      * @param expectedOutput - intended result
-     * @param actualOutput   - expected result
+     * @param actualOutput - expected result
      * @author Jason Lei
      */
-    private static void testResult(Date date, boolean expectedOutput, boolean actualOutput) {
+    private static void testResult(Date date, boolean expectedOutput, boolean actualOutput){
         System.out.println("Test input: " + date.toString());
         System.out.println("Expected output: " + expectedOutput);
         System.out.println("Actual output: " + actualOutput);
-        if (expectedOutput != actualOutput) {
+        if (expectedOutput != actualOutput){
             System.out.println(" (FAIL \n");
-        } else {
+        } else{
             System.out.println(" (PASS) \n");
         }
     }
