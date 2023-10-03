@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
 
 public class EventOrganizer {
     /**
-     * Default constructor 
+     * Default constructor
      */
     public EventOrganizer() {
     }
@@ -27,7 +27,7 @@ public class EventOrganizer {
      * @author
      */
     public void run() {
-        System.out.println("Event Organizer running....\n");
+        System.out.println("Event Organizer running....");
         EventCalendar eventCalendar = new EventCalendar();
         scan(eventCalendar);
         System.out.println("Event Organizer Terminated");
@@ -52,7 +52,6 @@ public class EventOrganizer {
             Scanner lineScanner = new Scanner(line);
             if (!lineScanner.hasNext())
                 continue;
-            // Tokenize each line by reading each token
             String token = lineScanner.next();
             if (x == 0) {
                 System.out.println(); //formatting
@@ -63,12 +62,16 @@ public class EventOrganizer {
             } else if (token.equals("R")) {
                 cancelEvent(line, eventCalendar);
             } else if (token.equals("P")) {
+                System.out.println("* Event calendar *");
                 eventCalendar.print();
             } else if (token.equals("PE")) {
+                System.out.println("Event calendar by event date and start time");
                 eventCalendar.printByDate();
             } else if (token.equals("PC")) {
+                System.out.println("* Event calendar by campus and building *");
                 eventCalendar.printByCampus();
             } else if (token.equals("PD")) {
+                System.out.println("Event calendar by department");
                 eventCalendar.printByDepartment();
             } else
                 System.out.println(token + " is an invalid command!");

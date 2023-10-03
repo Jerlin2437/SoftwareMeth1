@@ -66,10 +66,6 @@ public class Event implements Comparable<Event>{
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     /**
      * Getter method (accessor)
      * @return startTime
@@ -77,10 +73,6 @@ public class Event implements Comparable<Event>{
      */
     public Timeslot getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(Timeslot startTime) {
-        this.startTime = startTime;
     }
 
     /**
@@ -92,10 +84,6 @@ public class Event implements Comparable<Event>{
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     /**
      * Getter method (accessor)
      * @return contact
@@ -103,23 +91,6 @@ public class Event implements Comparable<Event>{
      */
     public Contact getContact() {
         return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    /**
-     * Getter method (accessor)
-     * @return duration
-     * @author Jason Lei
-     */
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 
     /**
@@ -146,7 +117,6 @@ public class Event implements Comparable<Event>{
         return false;
     }
 
-    //compare event date and timeslot
     /**
      * The compareTo() method first compares the dates of two events, then the timeslots if the dates are the same
      * @param event - specific event
@@ -187,7 +157,6 @@ public class Event implements Comparable<Event>{
     /**
      * Testbed main, as the driver to test public methods
      * @param args - input
-     * @return results of testEquals() and testCompareTo()
      * @author Jason Lei
      */
     public static void main(String[] args) {
@@ -202,7 +171,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #1 - two dates are different/not equal
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
 
@@ -223,7 +191,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #2 - two timeslots are different/not equal
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
 
@@ -244,7 +211,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #3 - two locations are different/not equal
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
 
@@ -265,7 +231,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #4 - two dates and two timeslots are different/not equal
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
 
@@ -286,7 +251,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #5 - two dates, two timeslots, and two locations are the same/equal
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
     private static void testAllEqual(){
@@ -306,7 +270,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #6 - two dates and two locations are different/not equal
-     * @return expected output, actual output, whether method passed the test case
      */
     private static void testDiffDateLoc(){
         Date date1 = new Date(2023, 6, 23);
@@ -325,7 +288,6 @@ public class Event implements Comparable<Event>{
 
     /**
      * Test case #6 - compares dates, then compares timeslots if the dates are the same
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
     private static void testCompareTo(){
@@ -347,7 +309,6 @@ public class Event implements Comparable<Event>{
      * @param event - specific event
      * @param expectedOutput - intended result
      * @param actualOutput - actual result
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
     private static void testResult(Event event, boolean expectedOutput, boolean actualOutput){
@@ -366,7 +327,6 @@ public class Event implements Comparable<Event>{
      * @param event - specific event
      * @param expectedOutput - intended result
      * @param actualOutput - actual result
-     * @return expected output, actual output, whether method passed the test case
      * @author Jason Lei
      */
     private static void testResult(Event event, int expectedOutput, int actualOutput){

@@ -87,7 +87,7 @@ public enum Timeslot {
      * Overloaded methodm returns textual representation of hour and minutes, including end hour and end minutes for an event's end time
      *
      * @param duration - time in minutes for a specific event
-     * @return
+     * @return hours and minutes, and end hours/minutes in text format
      * @author Jerlin Yuen
      */
     public String toString(int duration) {

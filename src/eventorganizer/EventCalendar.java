@@ -55,7 +55,6 @@ public class EventCalendar {
     /**
      * Increases the capacity of the events list by 4
      *
-     * @return events list with a capacity that has been increased by 4
      * @author Jason Lei, Jerlin Yuen
      */
     private void grow() {
@@ -135,16 +134,13 @@ public class EventCalendar {
     }
 
     /**
-     * Displays each event in the events list as is
-     *
-     * @return "Event calendar is empty" if events list is empty, events list if events list is not empty
+     * Displays "Event calendar is empty" if events list is empty, events list if events list is not empty
      * @author Jason Lei, Jerlin Yuen
      */
     public void print() {
         if (isEmpty()) {
             System.out.println("Event calendar is empty.");
         } else {
-            System.out.println("* Event calendar *");
             for (int x = 0; x < size; x++) {
                 System.out.println(events[x].toString());
             }
@@ -153,9 +149,7 @@ public class EventCalendar {
     }
 
     /**
-     * Displays each event in the events list, ordered by date and timeslot
-     *
-     * @return "Event calendar is empty" if events list is empty, events list ordered by date and timeslot if events list is not empty
+     * Displays "Event calendar is empty" if events list is empty, events list ordered by date and timeslot if events list is not empty
      * @author Jason Lei
      */
     public void printByDate() {
@@ -181,9 +175,7 @@ public class EventCalendar {
     }
 
     /**
-     * Displays each event in the events list, ordered by campus and building/room
-     *
-     * @return "Event calendar is empty" if events list is empty, events list ordered by campus and building/room if events list is not empty
+     * Displays "Event calendar is empty" if events list is empty, events list ordered by campus and building/room if events list is not empty
      * @author Jason Lei
      */
     public void printByCampus() {
@@ -208,8 +200,7 @@ public class EventCalendar {
 
     /**
      * Displays each event in the events list, ordered by department
-     *
-     * @return "Event calendar is empty" if events list is empty, events list ordered by department if events list is not empty
+     *"Event calendar is empty" if events list is empty, events list ordered by department if events list is not empty
      * @author Jason Lei
      */
     //order by department

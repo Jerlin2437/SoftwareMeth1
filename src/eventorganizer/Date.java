@@ -95,7 +95,7 @@ public class Date implements Comparable<Date> {
      * @return true if the date is less than or equal to 6 months away from the current date, false otherwise
      * @author Jason Lei
      */
-    public boolean isUnder6Months(){
+    public boolean isUnder6Months() {
         Calendar currentDate = Calendar.getInstance();
         Calendar eventDate = Calendar.getInstance();
         eventDate.set(year, month, day);
@@ -103,9 +103,16 @@ public class Date implements Comparable<Date> {
         int numOfMonths1 = currentDate.get(Calendar.YEAR) * 12 + currentDate.get(Calendar.MONTH);
         int numOfMonths2 = eventDate.get(Calendar.YEAR) * 12 + eventDate.get(Calendar.MONTH);
 
-        int diffInMonths = Math.abs(numOfMonths2 - numOfMonths1 - 1);
+        int diffInMonths = numOfMonths2 - numOfMonths1;
 
-        return diffInMonths <= 6;
+        if (diffInMonths < 6) {
+            return true;
+        } else if (diffInMonths == 6) {
+            int dayDiff = eventDate.get(Calendar.DAY_OF_MONTH) - currentDate.get(Calendar.DAY_OF_MONTH);
+            return dayDiff >= 0;  // If the day difference is non-negative, it's within 6 months and 1 day.
+        } else {
+            return false;
+        }
     }
     /**
      * Checks to see if a year is a leap year or a non-leap year
