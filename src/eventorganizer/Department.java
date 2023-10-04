@@ -8,11 +8,12 @@ package eventorganizer;
  */
 
 public enum Department {
+    BAIT("BAIT", "Business Analytics and Information Technology"),
     CS("CS", "Computer Science"),
     EE("EE", "Electrical Engineering"),
     ITI("ITI", "Information Technology and Informatics"),
-    MATH("MATH", "Mathematics"),
-    BAIT("BAIT", "Business Analytics and Information Technology");
+    MATH("MATH", "Mathematics");
+
 
     private final String acronym;
     private final String fullName;

@@ -65,13 +65,13 @@ public class EventOrganizer {
                 System.out.println("* Event calendar *");
                 eventCalendar.print();
             } else if (token.equals("PE")) {
-                System.out.println("Event calendar by event date and start time");
+                System.out.println("* Event calendar by event date and start time *");
                 eventCalendar.printByDate();
             } else if (token.equals("PC")) {
                 System.out.println("* Event calendar by campus and building *");
                 eventCalendar.printByCampus();
             } else if (token.equals("PD")) {
-                System.out.println("Event calendar by department");
+                System.out.println("* Event calendar by department *");
                 eventCalendar.printByDepartment();
             } else
                 System.out.println(token + " is an invalid command!");

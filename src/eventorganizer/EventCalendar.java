@@ -165,14 +165,25 @@ public class EventCalendar {
                         events[i] = events[j];
                         events[j] = temp;
                     }
+                    else if(events[j].getDate().compareTo(events[i].getDate()) == 0){
+                        if (events[j].getStartTime().compareTo((events[i].getStartTime())) < 0 ){
+                            temp = events[i];
+                            events[i] = events[j];
+                            events[j] = temp;
+                            }
+                    }
+
+
+                        }
+                    }
                 }
-            }
+
             //print by date
             print();
         }
 
 
-    }
+
 
     /**
      * Displays "Event calendar is empty" if events list is empty, events list ordered by campus and building/room if events list is not empty
@@ -182,7 +193,6 @@ public class EventCalendar {
         if (isEmpty()) {
             System.out.println("Event calendar is empty.");
         } else {
-            //sort by date
             for (int i = 0; i < size; i++) {
                 for (int j = i + 1; j < size; j++) {
                     Event temp = null;

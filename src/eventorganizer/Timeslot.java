@@ -1,5 +1,7 @@
 package eventorganizer;
 
+import java.sql.Time;
+
 /**
  * This enum class provides a list of specified timeslots with methods to convert
  * and change time durations.
@@ -84,7 +86,7 @@ public enum Timeslot {
     }
 
     /**
-     * Overloaded methodm returns textual representation of hour and minutes, including end hour and end minutes for an event's end time
+     * Overloaded method returns textual representation of hour and minutes, including end hour and end minutes for an event's end time
      *
      * @param duration - time in minutes for a specific event
      * @return hours and minutes, and end hours/minutes in text format
@@ -97,13 +99,20 @@ public enum Timeslot {
             endHour += 2;
         } else {
             endMinute += duration;
-            if (endMinute >= 60)
+            if (endMinute >= 120){
+                endHour += 2;
+                endMinute = endMinute - 120;
+            }
+            else if (endMinute >= 60) {
                 endHour++;
-            endMinute = endMinute - 60;
+                endMinute = endMinute - 60;
+            }
         }
         if (endMinute == 0) {
             return endHour + ":" + endMinute + "0";
         }
+        else if (endMinute >= 1 && endMinute <= 9)
+            return endHour + ":0" + endMinute;
         return endHour + ":" + endMinute;
     }
 }
